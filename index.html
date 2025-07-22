@@ -8,11 +8,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <canvas id="networkCanvas"></canvas>
-        <div id="nodes"></div>
-        <div id="detail-panel" class="detail-panel"></div>
-    </div>
+    <main class="top-fold">
+        <div class="grid-container">
+            <div class="left-column">
+                <h1>Decentralized P2P Network</h1>
+                <p>Experience the power of distributed computing through our interactive peer-to-peer network visualization. Watch as nodes connect, communicate, and create a resilient network in real-time.</p>
+                <button onclick="window.location.href='#networkCanvas'" type="button">Explore Network</button>
+            </div>
+            <div class="right-column">
+                <div class="container">
+                    <canvas id="networkCanvas"></canvas>
+                    <div id="nodes"></div>
+                    <div id="detail-panel" class="detail-panel"></div>
+                </div>
+            </div>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

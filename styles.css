@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 700px;
+    height: 700px;
+}
+
+#networkCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.node {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.node img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.5));
+}
+
+.node.three-components img {
+    filter: drop-shadow(0 0 10px rgba(46, 204, 113, 0.5));
+}
+
+.node.three-components::after {
+    content: '★';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    color: #f1c40f;
+    font-size: 14px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.node:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.node-label {
+    position: absolute;
+    top: -20px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.detail-panel {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 280px;
+    z-index: 10;
+    display: none;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
+                      linear-gradient(45deg, #2ecc71, #3498db);
+}
+
+.detail-panel.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.detail-panel h3 {
+    margin: 0 0 12px;
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.detail-panel h3::before {
+    content: '🖥️';
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.detail-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-panel li {
+    padding: 10px 0;
+    color: #34495e;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detail-panel li:last-child {
+    border-bottom: none;
+}
+
+.detail-panel li::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.detail-panel li.desktop-app::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232ecc71"><path d="M20 3H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6v2H8v2h8v-2h-2v-2h6c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H4V5h16v12z"/></svg>');
+}
+
+.detail-panel li.agent::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e67e22"><path d="M12 2a5 5 0 0 0-5 5v4a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zm3 9a3 3 0 0 1-6 0V7a3 3 0 0 1 6 0v4z"/></svg>');
+}
+
+.detail-panel li.local-ai::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239b59b6"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-12h2v4h4v2h-4v4h-2v-4H7v-2h4V8z"/></svg>');
+}
+
+.detail-panel .status {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.detail-panel .status.active {
+    background: #2ecc71;
+    color: white;
+}
+
+.detail-panel .status.limited {
+    background: #e67e22;
+    color: white;
+}

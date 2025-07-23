@@ -375,6 +375,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     gap: 3rem;
+    align-items: flex-start;
 }
 
 .headline-container {
@@ -389,6 +390,7 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
     color: #2ecc71;
+    margin: 0;
 }
 
 .headline-container p {
@@ -397,8 +399,8 @@ body {
     line-height: 1.6;
 }
 
-.content-card {
-    flex: 0 0 70%;
+.content-card {    
+    max-width: 100%;
     display: flex;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
@@ -424,8 +426,7 @@ body {
     transform: scale(1.05);
 }
 
-.text-content {
-    flex: 0 0 50%;
+.text-content {    
     padding: 2.5rem;
     display: flex;
     flex-direction: column;

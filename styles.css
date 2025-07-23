@@ -38,6 +38,7 @@ body {
     font-weight: 700;
     color: white;
     margin: 0;
+    margin-top: 15px;
     line-height: 1.2;
 }
 
@@ -265,4 +266,29 @@ body {
         max-width: 500px;
         height: 500px;
     }
+
+/* Scroll indicator for top fold */
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 24px;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
 }

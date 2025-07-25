@@ -36,14 +36,28 @@ body {
     font-weight: 700;
     color: white;
     margin: 0;
-    margin-top: 15px;
+    margin-top: 25px;
     line-height: 1.2;
 }
 
 .left-column p {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.9);
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.left-column ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding from ul */
+    margin-bottom: 10px; /* Removes default margin from ul */
+}
+
+.left-column li {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 5px;
     line-height: 1.6;
 }
 
@@ -98,8 +112,7 @@ body {
     justify-content: center;
     cursor: pointer;
     transform: translate(-50%, -50%);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;    
 }
 
 .node img {
@@ -280,7 +293,7 @@ body {
 .section-header p {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.8);
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
 }
 

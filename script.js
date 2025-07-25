@@ -1,15 +1,15 @@
 // Define the nodes with their components (5 nodes with 3 components, 5 with 2 components)
 const nodes = [
-    { id: 1, components: ['Desktop App', 'Agent', 'Local AI Model'], x: 0, y: 0 },
-    { id: 2, components: ['Desktop App', 'Agent'], x: 0, y: 0 },
-    { id: 3, components: ['Desktop App', 'Agent', 'Local AI Model'], x: 0, y: 0 },
-    { id: 4, components: ['Desktop App', 'Agent'], x: 0, y: 0 },
-    { id: 5, components: ['Desktop App', 'Agent', 'Local AI Model'], x: 0, y: 0 },
-    { id: 6, components: ['Desktop App', 'Agent'], x: 0, y: 0 },
-    { id: 7, components: ['Desktop App', 'Agent', 'Local AI Model'], x: 0, y: 0 },
-    { id: 8, components: ['Desktop App', 'Agent'], x: 0, y: 0 },
-    { id: 9, components: ['Desktop App', 'Agent', 'Local AI Model'], x: 0, y: 0 },
-    { id: 10, components: ['Desktop App', 'Agent'], x: 0, y: 0 }
+    { id: 1, components: ['Desktop App', 'Local Agent', 'Local AI Model'], x: 0, y: 0 },
+    { id: 2, components: ['Desktop App', 'Local Agent'], x: 0, y: 0 },
+    { id: 3, components: ['Desktop App', 'Local Agent', 'Local AI Model'], x: 0, y: 0 },
+    { id: 4, components: ['Desktop App', 'Local Agent'], x: 0, y: 0 },
+    { id: 5, components: ['Desktop App', 'Local Agent', 'Local AI Model'], x: 0, y: 0 },
+    { id: 6, components: ['Desktop App', 'Local Agent'], x: 0, y: 0 },
+    { id: 7, components: ['Desktop App', 'Local Agent', 'Local AI Model'], x: 0, y: 0 },
+    { id: 8, components: ['Desktop App', 'Local Agent'], x: 0, y: 0 },
+    { id: 9, components: ['Desktop App', 'Local Agent', 'Local AI Model'], x: 0, y: 0 },
+    { id: 10, components: ['Desktop App', 'Local Agent'], x: 0, y: 0 }
 ];
 
 // Define connections based on the screenshot
@@ -67,18 +67,19 @@ nodes.forEach(node => {
     // Add node label
     const label = document.createElement('div');
     label.className = 'node-label';
-    label.textContent = `Node ${node.id}`;
+    // label.textContent = `Node ${node.id}`;
+    label.textContent = `Neuron`;
     nodeElement.appendChild(label);
 
     // Hover events
     nodeElement.addEventListener('mouseenter', () => {
         detailPanel.innerHTML = `
-            <h3>Node ${node.id}</h3>
+            <h3>Neuron</h3>
             <ul>
                 ${node.components.map(comp => `<li class="${comp.toLowerCase().replace(' ', '-')}" style="text-transform: capitalize">${comp}</li>`).join('')}
             </ul>
             <div class="status ${node.components.length === 3 ? 'active' : 'limited'}">
-                ${node.components.length === 3 ? 'Active (Full)' : 'Limited'}
+                ${node.components.length === 3 ? 'sovereign privacy' : 'partial privacy'}
             </div>
         `;
         const panelWidth = 280;
@@ -121,13 +122,13 @@ detailPanel.innerHTML = `
         ${node7.components.map(comp => `<li class="${comp.toLowerCase().replace(' ', '-')}" style="text-transform: capitalize">${comp}</li>`).join('')}
     </ul>
     <div class="status ${node7.components.length === 3 ? 'active' : 'limited'}">
-        ${node7.components.length === 3 ? 'Active (Full)' : 'Limited'}
+        ${node7.components.length === 3 ? 'sovereign privacy' : 'partial privacy'}
     </div>
 `;
 const panelWidth = 280;
 const offsetX = node7.x + 60;
 detailPanel.style.left = `${offsetX + panelWidth > canvas.width ? node7.x - panelWidth - 20 : offsetX}px`;
 detailPanel.style.top = `${node7.y - 20}px`;
-detailPanel.classList.add('show');
+// detailPanel.classList.add('show');
 
 drawConnections();

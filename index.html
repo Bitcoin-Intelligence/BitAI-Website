@@ -1,28 +1,42 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P2P Network Visualization</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Fonts & CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <main class="top-fold">
+    <header class="site-header">
+        <a href="#" class="logo">
+            <!-- replace logo.svg with your real asset -->
+            <img src="https://via.placeholder.com/40x40/2ecc71/ffffff?text=B" alt="BitAI logo" />
+            <span class="project-name">BitAI</span>
+        </a>
+    </header>
+
+    <main class="top-fold" id="hero">
+        <canvas id="starsCanvas"></canvas>
         <div class="grid-container">
+            <!-- Marketing copy -->
             <div class="left-column">
                 <h1>Use BitAI agents, locally</h1>
                 <div>
-                <p>Run the BitAI app to access the BitAI agents and enjoy.</p>
-                <ul>
-                    <li><span style="color: green;">✔</span> Sovereign privacy</li>
-                    <li><span style="color: green;">✔</span> Unlimited usage at no cost</li>
-                    <li><span style="color: green;">✔</span> Rewards for powering the BitAI network</li>
-                </ul>
+                    <p>Run the BitAI app to access the BitAI agents and enjoy.</p>
+                    <ul>
+                        <li><span style="color:green;">✔</span> Sovereign privacy</li>
+                        <li><span style="color:green;">✔</span> Unlimited usage at no cost</li>
+                        <li><span style="color:green;">✔</span> Rewards for powering the BitAI network</li>
+                    </ul>
                 </div>
-                <button onclick="window.location.href='#networkCanvas'" type="button">Download BitAI app</button>
-
+                <button type="button" onclick="window.location.href='#networkCanvas'">Download BitAI app</button>
             </div>
+
+            <!-- Network diagram -->
             <div class="right-column">
                 <div class="container">
                     <canvas id="networkCanvas"></canvas>
@@ -31,10 +45,12 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
-            ↓
-        </div>
+
+        <!-- Scroll cue (now desktop‑only; hidden on mobile in CSS) -->
+        <div class="scroll-indicator" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">↓</div>
     </main>
+
+    <!-- (Other site sections below are unchanged) -->
     <section class="featured-videos">
         <div class="section-header">
             <h2>Use Cases</h2>
@@ -170,6 +186,7 @@
             </div>
         </div>
     </section>
+
     <script src="script.js"></script>
 </body>
 </html>

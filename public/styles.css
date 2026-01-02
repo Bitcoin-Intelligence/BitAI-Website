@@ -17,7 +17,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
     pointer-events:auto;
 }
 .logo img{height:40px;width:40px;object-fit:contain}
-.project-name{font-size:1.3rem;font-weight:200;color:#fff}
+.project-name{font-size:1.3rem;font-weight:200;color:#fff;margin-top: 5px;}
 
 /* add a modest drop‑shadow so it never disappears against bright frames */
 .site-header img,.project-name{filter:drop-shadow(0 0 4px rgba(0,0,0,.4))}

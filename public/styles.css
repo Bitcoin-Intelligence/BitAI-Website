@@ -1,6 +1,6 @@
 /* styles.css */
 /* ----------  Global ---------- */
-body{margin:0;background:linear-gradient(135deg,#1e3c72,#2a5298);font-family:'Poppins',sans-serif}
+body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Poppins',sans-serif}
 
 /* ----------  Layout (top fold) ---------- */
 .site-header{
@@ -34,14 +34,32 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#2a5298);font-family:'Po
     margin-top: 0.8rem;
 }
 .left-column ul{list-style:none;padding:0;margin:0 0 10px}
-.left-column button{background:linear-gradient(135deg,#2ecc71,#27ae60);color:#fff;border:none;padding:1rem 2rem;font-size:1.1rem;font-weight:600;border-radius:50px;cursor:pointer;transition:.3s;box-shadow:0 4px 15px rgba(46,204,113,.3);padding: 0.8rem 1.6rem;width: fit-content;}
+.left-column button{background:linear-gradient(135deg,#2ecc71,#27ae60);color:#fff;border:none;padding:1rem 2rem;font-size:1.1rem;font-weight:600;border-radius:50px;cursor:pointer;transition:.3s;box-shadow:0 4px 15px rgba(46,204,113,.3);padding: 0.8rem 1.6rem;width: fit-content;margin-bottom: 2rem;}
 .left-column button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,204,113,.4)}
 
 /* ----------  Right column / network ---------- */
 .right-column{display:flex;align-items:flex-start;justify-content:center;flex:1}
-.container{position:relative;width:100%;max-width:700px;aspect-ratio:1/1}
+
+/* ----------  Tabs ---------- */
+.tabs-container{width:100%;max-width:700px;display:flex;flex-direction:column-reverse;gap:0;margin-top:-2rem}
+.tabs-content{order:0}
+.tabs-header{display:flex;gap:0;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:8px;overflow:visible;padding:0;width:fit-content;margin:0 auto;position:relative;z-index:999}
+.tab-button{padding:0.5rem 1rem;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:none;border-right:1px solid rgba(255,255,255,.1);font-size:0.9rem;font-weight:500;cursor:pointer;transition:all .3s;letter-spacing:0.3px;margin:0;flex:1;white-space:nowrap;position:relative}
+.tab-button[title]{position:relative}
+.tab-button[title]:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);padding:6px 12px;background:rgba(0,0,0,.9);color:#fff;border-radius:6px;font-size:0.75rem;white-space:nowrap;pointer-events:none;z-index:1001;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.tab-button[title]:hover::before{content:'';position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(0,0,0,.9);pointer-events:none;z-index:1001}
+.tab-button:last-child{border-right:none}
+.tab-button:hover{background:rgba(255,255,255,.12);color:rgba(255,255,255,.8)}
+.tab-button.active{color:#fff;background:rgba(46,204,113,.15)}
+.tabs-content{position:relative}
+.tab-content{display:none;opacity:0;transition:opacity .3s}
+.tab-content.active{display:block;opacity:1}
+
+.container{position:relative;width:100%;max-width:700px;aspect-ratio:1/1;min-width:300px}
 #networkCanvas{position:absolute;inset:0;width:100%;height:100%}
+#networkCanvas2{position:absolute;inset:0;width:100%;height:100%}
 #nodes{position:absolute;inset:0}
+#nodes2{position:absolute;inset:0}
 
 /* ----------  Nodes ---------- */
 .node{position:absolute;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;transform:translate(-50%,-50%);transition:transform .3s,box-shadow .3s}
@@ -180,18 +198,28 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#2a5298);font-family:'Po
 }
 
 .section-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     max-width: 1400px;
     margin: 0 auto;
-    gap: 3rem;
-    align-items: flex-start;
+    gap: 1rem;
+    align-items: start;
+}
+
+.section-container.with-card {
+    grid-template-columns: 1fr 2fr;
 }
 
 .headline-container {
-    flex: 0 0 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+}
+
+.section-container.with-card .headline-container {
+    text-align: left;
+    justify-content: flex-start;
 }
 
 .headline-container h2 {
@@ -208,8 +236,20 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#2a5298);font-family:'Po
     line-height: 1.6;
 }
 
+#network-info-card-container {
+    display: flex;
+    justify-content: center;
+    grid-column: 1 / -1;
+}
+
+.section-container.with-card #network-info-card-container {
+    grid-column: 2;
+    grid-row: 1;
+}
+
 .content-card {    
-    max-width: 100%;
+    width: 100%;
+    max-width: 1400px;
     display: flex;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
@@ -299,7 +339,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#2a5298);font-family:'Po
 
 .card-image {
     width: 100%;
-    height: 180px;
+    aspect-ratio: 100 / 63;
     object-fit: cover;
 }
 
@@ -457,7 +497,12 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#2a5298);font-family:'Po
     .left-column button{align-self:center}
     .container{max-width:500px}
     .scroll-indicator{display:none}
-    .section-container{flex-direction:column;align-items:center}    
+    .section-container{grid-template-columns: 1fr}
+    .section-container.with-card{grid-template-columns: 1fr}
+
+    .tabs-header{gap:0;justify-content:center;border-radius:8px}
+    .tab-button{font-size:0.8rem;padding:0.4rem 0.8rem;margin:0;border-right:1px solid rgba(255,255,255,.1)}
+    .tab-button:last-child{border-right:none}
 
     .content-card{
         flex-direction: column;             
@@ -477,6 +522,23 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#2a5298);font-family:'Po
     .content-card .text-content{
         padding:1.5rem 2rem;
         text-align:left;                    
+    }
+
+    .headline-container {
+        text-align: center;
+    }
+
+    .section-container.with-card .headline-container {
+        text-align: center;
+    }
+
+    #network-info-card-container {
+        grid-column: 1;
+    }
+
+    .section-container.with-card #network-info-card-container {
+        grid-column: 1;
+        grid-row: auto;
     }
 }
 

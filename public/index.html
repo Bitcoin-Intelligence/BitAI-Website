@@ -25,26 +25,43 @@
             <!-- Marketing copy -->
             <div class="left-column">
                 <h1>Use AI agents, locally</h1>
-                <div>
+                <div id="benefits-container">
                     <p>Run the Local AGI app to use useful agents and enjoy:</p>
-                    <ul>
-                        <li><span style="color:green;">✔</span> Sovereign privacy</li>
-                        <li><span style="color:green;">✔</span> Unlimited usage at zero cost</li>
-                        <li><span style="color:green;">✔</span> Rewards for powering the Local AGI network</li>
+                    <ul id="benefits-list">
+                        <li><span style="color:green;">✔</span>  Sovereign privacy</li>
+                        <li><span style="color:green;">✔</span>  No censorship</li>
+                        <li><span style="color:green;">✔</span>  Unlimited usage</li>
                     </ul>
                 </div>
                 
                 <button type="button" onclick="window.location.href='#networkCanvas'" style="font-size: 1.4rem; padding: 15px 65px; display: inline-flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 2rem;"></span> Download App
+                    <span style="font-size: 2rem;"></span> Download
                 </button>
             </div>
 
             <!-- Network diagram -->
             <div class="right-column">
-                <div class="container">
-                    <canvas id="networkCanvas"></canvas>
-                    <div id="nodes"></div>
-                    <div id="detail-panel" class="detail-panel"></div>
+                <div class="tabs-container">
+                    <div class="tabs-content">
+                        <div class="tab-content active" id="tab-1">
+                            <div class="container">
+                                <canvas id="networkCanvas"></canvas>
+                                <div id="nodes"></div>
+                                <div id="detail-panel" class="detail-panel"></div>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-2">
+                            <div class="container">
+                                <canvas id="networkCanvas2"></canvas>
+                                <div id="nodes2"></div>
+                                <div id="detail-panel2" class="detail-panel"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs-header">
+                        <button class="tab-button active" data-tab="tab-1" title="now">&nbsp;&nbsp;local mode&nbsp;&nbsp;</button>
+                        <button class="tab-button" data-tab="tab-2" title="coming soon">network mode</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,29 +142,20 @@
     <section class="third-section">
         <div class="section-container">
             <div class="headline-container">
-                <h2>The Privacy-First Multi-Agent System</h2>                
+                <h2>The Privacy-First Multi-Agent Platform</h2>                
             </div>
-            <div class="content-card">
-                <div class="image-container">
-                    <img src="https://via.placeholder.com/400x300/1e3c72/ffffff?text=AI+Integration" alt="AI Integration">
-                </div>
-                <div class="text-content">
-                    <h3>Local AGI Network</h3>
-                    <p>The Local AGI network is powered by high-performance computers running the Local AGI desktop app. It functions as a decentralized AI inference provider, enabling less powerful computers to use Local AGI agents when they lack the resources to run local AI models.
-                    </p>                    
-                </div>
-            </div>
+            <div id="network-info-card-container"></div>
         </div>
         <div class="horizontal-cards">
             <div class="horizontal-card">
-                <img src="https://via.placeholder.com/300x200/1e3c72/ffffff?text=AI+Analytics" alt="AI Analytics" class="card-image">
+                <img src="assets/app.png" alt="Desktop App" class="card-image">
                 <div class="card-content">
                     <h3>Desktop App</h3>
                     <p>The consumer-friendly app that simplifies the multi-agent system’s complexity, enabling normies to effortlessly delegate complex real-world tasks to Local AGI agents.</p>
                 </div>
             </div>
             <div class="horizontal-card">
-                <img src="https://via.placeholder.com/300x200/1e3c72/ffffff?text=Security" alt="Security" class="card-image">
+                <img src="assets/local-agents.png" alt="Security" class="card-image">
                 <div class="card-content">
                     <h3>Local AI Agents</h3>
                     <p>Local AGI agents operate locally within a secure sandbox, easing concerns about scale, privacy and security while preventing data errors caused by AI hallucination.
@@ -155,41 +163,15 @@
                 </div>
             </div>
             <div class="horizontal-card">
-                <img src="https://via.placeholder.com/300x200/1e3c72/ffffff?text=Automation" alt="Automation" class="card-image">
+                <img src="assets/local-models.jpg" alt="Automation" class="card-image">
                 <div class="card-content">
                     <h3>Local AI Models</h3>
-                    <p>Local AI operation provides sovereign privacy (as data always stays on local device), unlimited usage at no cost, and consistent performance.
+                    <p>Local AI Models provide sovereign privacy (as data always stays on local device), unlimited usage, and consistent performance.
                     </p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- <section class="roadmap-section">
-        <div class="roadmap-container">
-            <div class="roadmap-title">
-                <h2>Roadmap</h2>
-                <p>Our journey to revolutionize decentralized Artificial Intelligence</p>
-            </div>
-            <div class="stepper">
-                <div class="step completed">
-                    <div class="step-circle">1</div>
-                    <div class="step-label">Privacy-first multi-agent system</div>
-                    <div class="step-status">completed</div>
-                </div>
-                <div class="step completed">
-                    <div class="step-circle">2</div>
-                    <div class="step-label">Permissioned P2P Local AGI network</div>
-                    <div class="step-status">completed</div>
-                </div>
-                <div class="step work-in-progress">
-                    <div class="step-circle">3</div>
-                    <div class="step-label">Decentralized P2P Local AGI network: consensus, incentive and slashing</div>
-                    <div class="step-status">work-in-progress</div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
     <script src="script.js"></script>
 </body>
 </html>

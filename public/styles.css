@@ -121,11 +121,11 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 
 .video-card {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 0.5px solid rgba(255, 255, 255, 0.15);
 }
 
 .video-card:hover {
@@ -144,12 +144,6 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .video-placeholder video {
     width: 100%;
     display: block;
-    transition: transform 0.3s ease;
-}
-
-.video-card:hover .video-placeholder img,
-.video-card:hover .video-placeholder video {
-    transform: scale(1.05);
 }
 
 .play-button {
@@ -195,8 +189,9 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 }
 
 .video-modal video {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
     border-radius: 10px;
 }
 
@@ -218,14 +213,41 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 }
 
 .video-caption {
-    padding: 1.5rem;
+    padding: 1rem 1.2rem;
+    position: relative;
+}
+
+.video-caption-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
 }
 
 .video-caption h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     color: white;
+}
+
+.prompt-copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.35);
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.prompt-copy-btn:hover {
+    color: #2ecc71;
+    background: rgba(46, 204, 113, 0.1);
 }
 
 .video-caption p {
@@ -233,6 +255,50 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     line-height: 1.5;
+}
+
+.prompt-wrapper {
+    position: relative;
+}
+
+.video-prompt {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+}
+
+.prompt-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(20, 25, 40, 0.95);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.prompt-tooltip p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.prompt-wrapper.is-truncated {
+    cursor: pointer;
+}
+
+.prompt-wrapper.is-truncated:hover .prompt-tooltip {
+    display: block;
 }
 
 /* Third section styles */

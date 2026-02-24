@@ -122,22 +122,24 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .video-card {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: visible;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     border: 0.5px solid rgba(255, 255, 255, 0.15);
-}
-
-.video-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .video-placeholder {
     position: relative;
     width: 100%;
     overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .video-placeholder img,
@@ -167,21 +169,20 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
     opacity: 1;
 }
 
-.video-placeholder {
-    cursor: pointer;
-}
-
 .video-modal {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
     z-index: 9999;
     align-items: center;
     justify-content: center;
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
 .video-modal.active {
@@ -189,8 +190,10 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 }
 
 .video-modal video {
-    max-width: 95vw;
-    max-height: 95vh;
+    width: auto;
+    height: auto;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 6rem);
     object-fit: contain;
     border-radius: 10px;
 }

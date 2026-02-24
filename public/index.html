@@ -255,11 +255,6 @@
                 </div>
             </div>
         </div>
-        <!-- Video Modal -->
-        <div id="video-modal" class="video-modal" onclick="closeVideoModal(event)">
-            <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
-            <video id="modal-video" controls autoplay loop></video>
-        </div>
         <script>
         function copyPrompt(btn) {
             var text = btn.closest('.video-caption').querySelector('.prompt-tooltip p').textContent;
@@ -346,6 +341,11 @@
             </div>
         </div>
     </section>
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal" onclick="closeVideoModal(event)">
+        <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
+        <video id="modal-video" controls autoplay loop></video>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .project-name{font-size:1.3rem;font-weight:200;color:#fff;margin-top:5px}
 .site-header img,.project-name{filter:drop-shadow(0 0 4px rgba(0,0,0,.4))}
 .nav-links{display:flex;align-items:center;gap:1.8rem}
-.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color .2s}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color .2s;padding:0.6rem 0.4rem;min-height:44px;display:flex;align-items:center}
 .nav-links a:hover{color:#fff}
 .nav-cta{background:linear-gradient(135deg,#2ecc71,#27ae60);color:#fff!important;padding:0.5rem 1.4rem;border-radius:50px;font-weight:600;font-size:0.85rem!important}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(46,204,113,.3)}
@@ -164,7 +164,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .footer-brand{display:flex;align-items:center;gap:0.5rem;font-size:1.1rem;font-weight:600}
 .footer-logo{height:30px;width:30px;object-fit:contain}
 .footer-links{display:flex;gap:1.5rem}
-.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:0.9rem;transition:color .2s}
+.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:0.9rem;transition:color .2s;padding:0.6rem 0.2rem;min-height:44px;display:flex;align-items:center}
 .footer-links a:hover{color:#2ecc71}
 .footer-bottom{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.05)}
 .footer-bottom p{font-size:0.8rem;color:rgba(255,255,255,.35);margin:0}

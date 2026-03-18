@@ -12,249 +12,265 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+    <!-- 1. NAV -->
     <header class="site-header">
         <a href="#" class="logo">
-            <!-- replace logo.svg with your real asset -->
             <img src="assets/transparent-logo.png" alt="Local AGI logo" />
             <span class="project-name">Local AGI</span>
         </a>
+        <nav class="nav-links">
+            <a href="#use-cases">Use Cases</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#network">Network</a>
+            <a href="#" class="nav-cta">Download</a>
+        </nav>
     </header>
 
+    <!-- 2. HERO -->
     <main class="top-fold" id="hero">
         <canvas id="starsCanvas"></canvas>
         <div class="grid-container">
-            <!-- Marketing copy -->
             <div class="left-column">
-                <h1>Use AI agents, locally</h1>
-                <div id="benefits-container">
-                    <p>Run the Local AGI app to use useful agents and enjoy:</p>
-                    <ul id="benefits-list">
-                        <li><span style="color:green;">✔</span>  Sovereign privacy</li>
-                        <li><span style="color:green;">✔</span>  No censorship</li>
-                        <li><span style="color:green;">✔</span>  Unlimited usage</li>
-                    </ul>
+                <h1>AI, powered by people</h1>
+                <p class="hero-subtitle">A peer-to-peer network where AI lives on real devices, not corporate clouds. Uncensorable. Unstoppable.</p>
+                <div class="hero-ctas">
+                    <button type="button" class="cta-primary">Download App</button>
+                    <a href="#how-it-works" class="cta-secondary">See How It Works &rarr;</a>
                 </div>
-                
-                <button type="button" onclick="window.location.href='#networkCanvas'" style="font-size: 1.4rem; padding: 15px 65px; display: inline-flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 2rem;"></span> Download
-                </button>
             </div>
-
-            <!-- Network diagram -->
             <div class="right-column">
-                <div class="tabs-container">
-                    <div class="tabs-content">
-                        <div class="tab-content active" id="tab-1">
-                            <div class="container">
-                                <canvas id="networkCanvas"></canvas>
-                                <div id="nodes"></div>
-                                <div id="detail-panel" class="detail-panel"></div>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="tab-2">
-                            <div class="container">
-                                <canvas id="networkCanvas2"></canvas>
-                                <div id="nodes2"></div>
-                                <div id="detail-panel2" class="detail-panel"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tabs-header">
-                        <button class="tab-button active" data-tab="tab-1" title="now">&nbsp;&nbsp;local mode&nbsp;&nbsp;</button>
-                        <button class="tab-button" data-tab="tab-2" title="coming soon">network mode</button>
-                    </div>
+                <div class="container">
+                    <canvas id="networkCanvas"></canvas>
+                    <div id="nodes"></div>
+                    <div id="detail-panel" class="detail-panel"></div>
+                </div>
+                <div class="network-legend">
+                    <span class="legend-item legend-provider"><span class="legend-dot"></span> Provider</span>
+                    <span class="legend-item legend-consumer"><span class="legend-dot"></span> Consumer</span>
                 </div>
             </div>
         </div>
-
-        <!-- Scroll cue (now desktop‑only; hidden on mobile in CSS) -->
-        <div class="scroll-indicator" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">↓</div>
+        <div class="scroll-indicator" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">&#x2193;</div>
     </main>
 
-    <!-- (Other site sections below are unchanged) -->
-    <section class="featured-videos">
+    <!-- 3. SOCIAL PROOF BAR -->
+    <section class="social-proof-bar">
+        <div class="proof-stats">
+            <span class="stat"><span class="stat-dot"></span> 2,847 Providers</span>
+            <span class="stat-divider">|</span>
+            <span class="stat">184K Tasks</span>
+            <span class="stat-divider">|</span>
+            <span class="stat">156 Models</span>
+            <span class="stat-divider">|</span>
+            <span class="stat">1.2s Avg</span>
+        </div>
+    </section>
+
+    <!-- 4. USE CASES -->
+    <section class="featured-videos" id="use-cases">
         <div class="section-header">
-            <h2>Use Cases</h2>
-            <p>Discover how Local AGI multi-agent system privately handles real-world tasks.</p>
+            <span class="section-label">USE CASES</span>
+            <h2>What can Local AGI do?</h2>
+            <p>Real-world tasks handled by private AI agents on your hardware.</p>
         </div>
-        <div class="videos-grid">
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809721/data-analysis-video-selected_h1hbpl.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+
+        <!-- ANALYSIS -->
+        <div class="use-case-category">
+            <h3 class="category-label">Analysis</h3>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809721/data-analysis-video-selected_h1hbpl.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                        </div>
                     </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Data Analysis</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">Analyze Amazon sales data for January 2025, identify trends and suggest improvements to boost sales 10% next month</p>
-                        <div class="prompt-tooltip">
-                            <p>Analyze Amazon sales data for January 2025, identify trends and suggest improvements to boost sales 10% next month</p>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Data Analysis</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">Analyze Amazon sales data for January 2025, identify trends and suggest improvements to boost sales 10% next month</p>
+                            <div class="prompt-tooltip">
+                                <p>Analyze Amazon sales data for January 2025, identify trends and suggest improvements to boost sales 10% next month</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809724/stock-analysis-video-selected_qgxstw.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809724/stock-analysis-video-selected_qgxstw.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                        </div>
                     </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Stock Analysis</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">Should I buy Tesla stock now?</p>
-                        <div class="prompt-tooltip">
-                            <p>Should I buy Tesla stock now?</p>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Stock Analysis</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">Should I buy Tesla stock now?</p>
+                            <div class="prompt-tooltip">
+                                <p>Should I buy Tesla stock now?</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771894045/crypto-analysis-video-selected_wtula2.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Crypto Analysis</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">Should I buy Bitcoin now?</p>
-                        <div class="prompt-tooltip">
-                            <p>Should I buy Bitcoin now?</p>
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771894045/crypto-analysis-video-selected_wtula2.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809713/secretary-shopping-video-selected_vzkqtf.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Administrative Duty</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">Sign in to amazon then add The Coming Wave by Mustafa Suleyman to my cart</p>
-                        <div class="prompt-tooltip">
-                            <p>Sign in to amazon then add The Coming Wave by Mustafa Suleyman to my cart</p>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Crypto Analysis</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809714/image-generation-selected_gz3lv4.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Image Creation</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">Stunning beautiful european 18 year old, fuller chest, seated inside a car interior at night, black open car door visible behind her, soft flash lighting creating sharp highlights and shadows, glossy black strapless top wrapping tightly across the chest, smooth matte.</p>
-                        <div class="prompt-tooltip">
-                            <p>Stunning beautiful european 18 year old, fuller chest, seated inside a car interior at night, black open car door visible behind her, soft flash lighting creating sharp highlights and shadows, glossy black strapless top wrapping tightly across the chest, smooth matte.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809714/image-editing-selected_gxob8m.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Image Editing</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">Change clothes to a lace lingerie. Keep everything else unchanged.</p>
-                        <div class="prompt-tooltip">
-                            <p>Change clothes to a lace lingerie. Keep everything else unchanged.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809710/image-generation2-selected_emm6m0.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Image Creation</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">A realistic, high-resolution night photograph mimicking the aesthetic of flash photography, featuring a stylish young couple posing closely together on an elegant stone balcony with a classic white balustrade. The young woman, positioned on the left with her body angled slightly away, has long, voluminous honey-blonde wavy hair cascading down her back and is wearing a black spaghetti-strap mini dress featuring intricate lace detailing on the bodice and a tiered, ruffled skirt; she looks back over her shoulder at the camera with a soft, pleasant smile while resting one hand on the man's shoulder. Beside her stands a handsome young man with tan skin, dark curly hair styled with a fade, and a confident expression, dressed in a crisp black button-down shirt tucked into black dress pants with a visible leather belt, his arm wrapped affectionately around her waist. The setting is nighttime with a pitch-black sky and distant, out-of-focus city lights visible in the background, contrasting with the bright, direct lighting on the subjects and the white architectural column on the right, capturing a candid, trendy "date night" or homecoming social media vibe.</p>
-                        <div class="prompt-tooltip">
-                            <p>A realistic, high-resolution night photograph mimicking the aesthetic of flash photography, featuring a stylish young couple posing closely together on an elegant stone balcony with a classic white balustrade. The young woman, positioned on the left with her body angled slightly away, has long, voluminous honey-blonde wavy hair cascading down her back and is wearing a black spaghetti-strap mini dress featuring intricate lace detailing on the bodice and a tiered, ruffled skirt; she looks back over her shoulder at the camera with a soft, pleasant smile while resting one hand on the man's shoulder. Beside her stands a handsome young man with tan skin, dark curly hair styled with a fade, and a confident expression, dressed in a crisp black button-down shirt tucked into black dress pants with a visible leather belt, his arm wrapped affectionately around her waist. The setting is nighttime with a pitch-black sky and distant, out-of-focus city lights visible in the background, contrasting with the bright, direct lighting on the subjects and the white architectural column on the right, capturing a candid, trendy "date night" or homecoming social media vibe.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" onclick="toggleVideo(this)">
-                    <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809721/video-generation-selected_cs86l1.mp4" muted loop playsinline preload="metadata"></video>
-                    <div class="play-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <div class="video-caption-header">
-                        <h3>Video Creation</h3>
-                        <button class="prompt-copy-btn" onclick="copyPrompt(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
-                    </div>
-                    <div class="prompt-wrapper">
-                        <p class="video-prompt">Create a video making them kiss each other.</p>
-                        <div class="prompt-tooltip">
-                            <p>Create a video making them kiss each other.</p>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">Should I buy Bitcoin now?</p>
+                            <div class="prompt-tooltip">
+                                <p>Should I buy Bitcoin now?</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- CREATE -->
+        <div class="use-case-category">
+            <h3 class="category-label">Create</h3>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809714/image-generation-selected_gz3lv4.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Image Creation</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">Cinematic portrait, dramatic studio lighting, editorial fashion look, black background with rim lighting</p>
+                            <div class="prompt-tooltip">
+                                <p>Cinematic portrait, dramatic studio lighting, editorial fashion look, black background with rim lighting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809714/image-editing-selected_gxob8m.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Image Editing</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">Change the background to a sunset over the ocean. Keep the subject and lighting unchanged.</p>
+                            <div class="prompt-tooltip">
+                                <p>Change the background to a sunset over the ocean. Keep the subject and lighting unchanged.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809710/image-generation2-selected_emm6m0.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Image Creation</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">A realistic, high-resolution night photograph featuring a stylish young couple posing together on an elegant stone balcony, candid flash photography aesthetic with city lights in the background</p>
+                            <div class="prompt-tooltip">
+                                <p>A realistic, high-resolution night photograph featuring a stylish young couple posing together on an elegant stone balcony, candid flash photography aesthetic with city lights in the background</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809721/video-generation-selected_cs86l1.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Video Creation</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">Create a cinematic video from this image with natural movement and camera pan</p>
+                            <div class="prompt-tooltip">
+                                <p>Create a cinematic video from this image with natural movement and camera pan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AUTOMATE -->
+        <div class="use-case-category">
+            <h3 class="category-label">Automate</h3>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="toggleVideo(this)">
+                        <video src="https://res.cloudinary.com/dpwgsxrlc/video/upload/v1771809713/secretary-shopping-video-selected_vzkqtf.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <div class="video-caption-header">
+                            <h3>Administrative Duty</h3>
+                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div class="prompt-wrapper">
+                            <p class="video-prompt">Sign in to amazon then add The Coming Wave by Mustafa Suleyman to my cart</p>
+                            <div class="prompt-tooltip">
+                                <p>Sign in to amazon then add The Coming Wave by Mustafa Suleyman to my cart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
         function copyPrompt(btn) {
             var text = btn.closest('.video-caption').querySelector('.prompt-tooltip p').textContent;
@@ -308,39 +324,114 @@
         });
         </script>
     </section>
-    <section class="third-section">
-        <div class="section-container">
-            <div class="headline-container">
-                <h2>The Privacy-First Multi-Agent Platform</h2>                
+
+    <!-- 5. FOR PROVIDERS -->
+    <section class="for-providers" id="for-providers">
+        <span class="section-label">FOR PROVIDERS</span>
+        <h2>Power the Network</h2>
+        <p class="section-subtitle">Share your spare compute. Stay private. Earn rewards.</p>
+        <div class="provider-cards">
+            <div class="provider-card">
+                <div class="provider-card-icon">&#x1F4B0;</div>
+                <h3>Earn Rewards</h3>
+                <p>Get paid for compute you aren't using.</p>
             </div>
-            <div id="network-info-card-container"></div>
+            <div class="provider-card">
+                <div class="provider-card-icon">&#x1F512;</div>
+                <h3>Private Processing</h3>
+                <p>Tasks run entirely on YOUR device. No cloud.</p>
+            </div>
+            <div class="provider-card">
+                <div class="provider-card-icon">&#x267E;</div>
+                <h3>Unlimited Usage</h3>
+                <p>Use AI agents without limits while providing.</p>
+            </div>
         </div>
-        <div class="horizontal-cards">
-            <div class="horizontal-card">
-                <img src="assets/app.png" alt="Desktop App" class="card-image">
-                <div class="card-content">
-                    <h3>Desktop App</h3>
-                    <p>The consumer-friendly app that simplifies the multi-agent system’s complexity, enabling normies to effortlessly delegate complex real-world tasks to Local AGI agents.</p>
-                </div>
+        <p class="provider-closing">Same app. Just click "Provide" to get started.</p>
+        <button class="cta-primary" type="button">Download App</button>
+    </section>
+
+    <!-- 6. HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <span class="section-label">HOW IT WORKS</span>
+        <h2>Two paths, one app</h2>
+        <div class="two-track">
+            <div class="track">
+                <h3 class="track-title">Consumers</h3>
+                <div class="track-step"><span class="step-number">1</span> Download the app</div>
+                <div class="track-step"><span class="step-number">2</span> Ask the agent</div>
+                <div class="track-step"><span class="step-number">3</span> Get results privately</div>
             </div>
-            <div class="horizontal-card">
-                <img src="assets/local-agents.png" alt="Security" class="card-image">
-                <div class="card-content">
-                    <h3>Local AI Agents</h3>
-                    <p>Local AGI agents operate locally within a secure sandbox, easing concerns about scale, privacy and security while preventing data errors caused by AI hallucination.
-                    </p>
-                </div>
-            </div>
-            <div class="horizontal-card">
-                <img src="assets/local-models.png" alt="Automation" class="card-image">
-                <div class="card-content">
-                    <h3>Local AI Models</h3>
-                    <p>Local AI Models provide sovereign privacy (as data always stays on local device), unlimited usage, and consistent performance.
-                    </p>
-                </div>
+            <div class="track">
+                <h3 class="track-title">Providers</h3>
+                <div class="track-step"><span class="step-number">1</span> Download the app</div>
+                <div class="track-step"><span class="step-number">2</span> Enable Provide mode</div>
+                <div class="track-step"><span class="step-number">3</span> Earn while staying private</div>
             </div>
         </div>
     </section>
+
+    <!-- 7. NETWORK STATS -->
+    <section class="network-stats" id="network">
+        <span class="section-label">NETWORK</span>
+        <h2>Network Health</h2>
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-value">2,847</div>
+                <div class="stat-label-text">Providers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">184K</div>
+                <div class="stat-label-text">Tasks Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">156</div>
+                <div class="stat-label-text">Models Available</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1.2s</div>
+                <div class="stat-label-text">Avg Latency</div>
+            </div>
+        </div>
+        <div class="network-table-wrapper">
+            <table class="network-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Providers</th>
+                        <th>Latency</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Llama 3.2 70B</td><td>342</td><td>1.4s</td><td><span class="status-badge online">Online</span></td></tr>
+                    <tr><td>Qwen3 32B</td><td>218</td><td>0.9s</td><td><span class="status-badge online">Online</span></td></tr>
+                    <tr><td>DeepSeek R1 14B</td><td>156</td><td>0.6s</td><td><span class="status-badge online">Online</span></td></tr>
+                    <tr><td>Flux Schnell</td><td>89</td><td>3.2s</td><td><span class="status-badge busy">Busy</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/transparent-logo.png" alt="Local AGI" class="footer-logo">
+                <span>Local AGI</span>
+            </div>
+            <nav class="footer-links">
+                <a href="#">GitHub</a>
+                <a href="#">Discord</a>
+                <a href="#">Docs</a>
+            </nav>
+            <button class="cta-primary" type="button">Download App</button>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Local AGI</p>
+        </div>
+    </footer>
+
     <!-- Video Modal -->
     <div id="video-modal" class="video-modal" onclick="closeVideoModal(event)">
         <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>

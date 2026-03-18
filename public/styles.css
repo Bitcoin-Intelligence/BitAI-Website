@@ -111,7 +111,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .video-caption{padding:1rem 1.2rem;position:relative}
 .video-caption-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem}
 .video-caption h3{font-size:1.3rem;font-weight:600;margin:0;color:white}
-.prompt-copy-btn{display:flex;align-items:center;justify-content:center;background:none;border:none;color:rgba(255,255,255,.35);padding:4px;border-radius:4px;cursor:pointer;transition:all .2s ease;flex-shrink:0}
+.prompt-copy-btn{display:flex;align-items:center;justify-content:center;background:none;border:none;color:rgba(255,255,255,.35);padding:10px;border-radius:4px;cursor:pointer;transition:all .2s ease;flex-shrink:0;min-width:44px;min-height:44px}
 .prompt-copy-btn:hover{color:#2ecc71;background:rgba(46,204,113,.1)}
 .video-caption p{font-size:0.9rem;color:rgba(255,255,255,.7);margin:0;line-height:1.5}
 .prompt-wrapper{position:relative}

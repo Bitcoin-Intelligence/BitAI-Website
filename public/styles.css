@@ -122,7 +122,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .prompt-wrapper.is-truncated:hover .prompt-tooltip{display:block}
 
 /* ----------  5. FOR PROVIDERS ---------- */
-.for-providers{padding:5rem 2rem;background:linear-gradient(135deg,#1a2a4a,#1e3c72);color:white;text-align:center}
+.for-providers{padding:5rem 2rem;background:linear-gradient(180deg,#152240,#1a2a4a);color:white;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
 .for-providers h2{font-size:2.5rem;font-weight:700;margin-bottom:1rem;color:#2ecc71}
 .provider-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1000px;margin:0 auto 2rem}
 .provider-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:2rem;transition:all .3s;text-align:center}
@@ -133,7 +133,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .provider-closing{font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:1.5rem}
 
 /* ----------  6. HOW IT WORKS ---------- */
-.how-it-works{padding:5rem 2rem;background:linear-gradient(135deg,#1e3c72,#1a2a4a);color:white;text-align:center}
+.how-it-works{padding:5rem 2rem;background:linear-gradient(180deg,#1a2a4a,#162344);color:white;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
 .how-it-works h2{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem;color:#2ecc71}
 .two-track{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:800px;margin:2rem auto 0}
 .track{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:2rem;text-align:left}
@@ -143,7 +143,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .step-number{width:28px;height:28px;border-radius:50%;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.4);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;flex-shrink:0;color:#2ecc71}
 
 /* ----------  7. NETWORK STATS ---------- */
-.network-stats{padding:5rem 2rem;background:linear-gradient(135deg,#1a2a4a,#1e3c72);color:white;text-align:center}
+.network-stats{padding:5rem 2rem;background:linear-gradient(180deg,#162344,#0f1b38);color:white;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
 .network-stats h2{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem;color:#2ecc71}
 .stats-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:2rem auto}
 .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.5rem}

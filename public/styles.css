@@ -91,7 +91,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 .section-header h2{font-size:2.5rem;font-weight:700;margin-bottom:1rem;color:#2ecc71}
 .section-header p{font-size:1.2rem;color:rgba(255,255,255,.8);max-width:800px;margin:0 auto}
 .use-case-category{max-width:1400px;margin:0 auto 3rem}
-.category-label{font-size:0.85rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.5rem;padding-left:0.5rem;border-left:3px solid #2ecc71}
+.category-label{font-size:1rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.5rem;padding-left:0.75rem;border-left:3px solid #2ecc71}
 .videos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1400px;margin:0 auto}
 .video-card{background:rgba(255,255,255,.1);border-radius:8px;overflow:visible;transition:all .3s ease;backdrop-filter:blur(10px);border:0.5px solid rgba(255,255,255,.15)}
 .video-placeholder{position:relative;width:100%;overflow:hidden;border-radius:8px 8px 0 0;cursor:pointer}

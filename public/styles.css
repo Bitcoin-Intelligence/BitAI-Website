@@ -172,11 +172,11 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 /* ----------  7. NETWORK STATS ---------- */
 .network-stats{padding:5rem 2rem;background:linear-gradient(180deg,#162344,#0f1b38);color:white;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
 .network-stats h2{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem;color:#fff}
-.stats-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:2rem auto}
+.stats-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1000px;margin:2rem auto}
 .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.5rem}
 .stat-value{font-size:2rem;font-weight:700;color:#DA7756}
 .stat-label-text{font-size:0.8rem;color:rgba(255,255,255,.5);margin-top:0.3rem;text-transform:uppercase;letter-spacing:1px}
-.network-table-wrapper{max-width:900px;margin:2rem auto 0;overflow-x:auto}
+.network-table-wrapper{max-width:1000px;margin:2rem auto 0;overflow-x:auto}
 .network-table{width:100%;border-collapse:collapse;text-align:left}
 .network-table th{font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);padding:0.8rem 1rem;border-bottom:1px solid rgba(255,255,255,.1)}
 .network-table td{padding:0.8rem 1rem;color:rgba(255,255,255,.75);font-size:0.95rem;border-bottom:1px solid rgba(255,255,255,.05)}

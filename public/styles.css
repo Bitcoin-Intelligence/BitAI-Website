@@ -137,6 +137,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 
 /* ----------  6. HOW IT WORKS ---------- */
 .how-it-works{padding:5rem 2rem;background:linear-gradient(180deg,#1a2a4a,#162344);color:white;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
+.how-it-works>.section-label{margin-bottom:2.5rem}
 .how-it-works h2{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem;color:#DA7756}
 /* Two-track steps */
 .two-track-heading{font-size:1.5rem;font-weight:700;color:rgba(255,255,255,.7);text-align:center;margin:3rem 0 0.5rem}

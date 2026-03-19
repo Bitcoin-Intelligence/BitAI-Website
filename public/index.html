@@ -25,7 +25,6 @@
             <a href="#use-cases">Use Cases</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#network">Network</a>
-            <a href="#" class="nav-cta">Download</a>
         </nav>
     </header>
 
@@ -283,7 +282,7 @@
                 var label = document.createElement('span');
                 label.textContent = 'Copied!';
                 label.style.fontSize = '0.7rem';
-                label.style.color = '#2ecc71';
+                label.style.color = '#DA7756';
                 label.style.whiteSpace = 'nowrap';
                 btn.appendChild(label);
                 setTimeout(function() {
@@ -357,7 +356,45 @@
     <!-- 6. HOW IT WORKS -->
     <section class="how-it-works" id="how-it-works">
         <span class="section-label">HOW IT WORKS</span>
-        <h2>Two paths, one app</h2>
+        <div class="components-top">
+            <div class="components-headline">
+                <h2>The First Agentic P2P Platform</h2>
+            </div>
+            <div class="content-card">
+                <div class="image-container">
+                    <img src="assets/localagi-network.png" alt="Local AGI Network">
+                </div>
+                <div class="text-content">
+                    <h3>Local AGI Network</h3>
+                    <p>The Local AGI network is powered by high-performance devices running the Local AGI desktop app. These devices provide intelligence for the entire platform, allowing less powerful devices to utilize Local AGI agents when they lack the resources to run local AI models.</p>
+                </div>
+            </div>
+        </div>
+        <div class="horizontal-cards">
+            <div class="horizontal-card">
+                <img src="assets/app.png" alt="Desktop App" class="card-image">
+                <div class="card-content">
+                    <h3>Desktop App</h3>
+                    <p>The consumer-friendly app that simplifies the multi-agent system's complexity, enabling anyone to effortlessly delegate complex real-world tasks to Local AGI agents.</p>
+                </div>
+            </div>
+            <div class="horizontal-card">
+                <img src="assets/local-agents.png" alt="Local AI Agents" class="card-image">
+                <div class="card-content">
+                    <h3>Local AI Agents</h3>
+                    <p>Local AGI agents operate locally within a secure sandbox, easing concerns about scale, privacy and security while preventing data errors caused by AI hallucination.</p>
+                </div>
+            </div>
+            <div class="horizontal-card">
+                <img src="assets/local-models.png" alt="Local AI Models" class="card-image">
+                <div class="card-content">
+                    <h3>Local AI Models</h3>
+                    <p>Local AI Models provide sovereign privacy (as data always stays on local device), unlimited usage, and consistent performance.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="two-track-heading">Two paths, one app</h3>
         <div class="two-track">
             <div class="track">
                 <h3 class="track-title">Consumers</h3>
@@ -423,15 +460,8 @@
                 <img src="assets/transparent-logo.png" alt="Local AGI" class="footer-logo">
                 <span>Local AGI</span>
             </div>
-            <nav class="footer-links">
-                <a href="#">GitHub</a>
-                <a href="#">Discord</a>
-                <a href="#">Docs</a>
-            </nav>
-            <button class="cta-primary" type="button">Download App</button>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Local AGI</p>
+            <a href="#" class="footer-discord">Discord</a>
+            <p class="footer-copy">&copy; 2026 Local AGI</p>
         </div>
     </footer>
 

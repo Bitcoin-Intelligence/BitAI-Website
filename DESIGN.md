@@ -39,9 +39,9 @@
   - Border: `rgba(255,255,255,0.08)` — subtle dividers
   - Border strong: `rgba(255,255,255,0.15)` — interactive borders
 - **Accent:**
-  - Primary (Gold): `#E8A830` — signals value, reward, premium. Used for CTAs, active states, emphasis. On dark backgrounds.
-  - Primary hover: `#F0BC50`
-  - Primary muted: `rgba(232,168,48,0.15)` — backgrounds, badges
+  - Primary (Terracotta): `#DA7756` — warm, human, distinctive. Used for CTAs, active states, emphasis. On dark backgrounds.
+  - Primary hover: `#c4643f`
+  - Primary muted: `rgba(218,119,86,0.15)` — backgrounds, badges
   - Secondary (Teal): `#38BFA0` — active/online indicators, success states, consumer-side accent
   - Secondary muted: `rgba(56,191,160,0.12)`
 - **Text (dark mode):**
@@ -206,7 +206,7 @@
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-03-18 | Initial design system created | Created by /design-consultation based on competitive research (LM Studio, Jan.ai, Ollama, GPT4All, Akash) and product context (two-sided marketplace) |
-| 2026-03-18 | Gold (#E8A830) as primary accent | Signals value exchange in marketplace. No competitor uses gold. Differentiates from generic green/blue/purple AI tools. |
+| 2026-03-18 | Terracotta (#DA7756) as primary accent | Warm, human, distinctive. No competitor uses terracotta. Differentiates from generic green/blue/purple AI tools. "Powered by people" = warm human color. |
 | 2026-03-18 | Space Grotesk for display | Geometric precision communicates infrastructure. Distinctive vs. competitors (none use it). Replaces overused Poppins. |
 | 2026-03-18 | Dark mode default | Communicates privacy/security (core value prop). Industry convention for AI tools. |
 | 2026-03-18 | Two-sided layout structure | Product is a marketplace, not a single-player tool. Layout must speak to both consumers and providers simultaneously. |

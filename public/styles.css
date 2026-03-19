@@ -219,8 +219,11 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
     .container{max-width:500px}
     .network-legend{margin-top:0.3rem}
     .scroll-indicator{display:none}
-    .videos-grid{grid-template-columns:1fr}
+    .videos-grid{grid-template-columns:repeat(2,1fr)}
     .two-track{grid-template-columns:1fr}
     .stats-cards{grid-template-columns:repeat(2,1fr)}
     .footer-content{flex-direction:column;text-align:center;gap:0.5rem}
+}
+@media (max-width:500px){
+    .videos-grid{grid-template-columns:1fr}
 }

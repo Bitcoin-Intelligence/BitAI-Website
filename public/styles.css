@@ -38,11 +38,11 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
 .top-fold{height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;padding-top:4.5rem}
 #starsCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .grid-container{display:flex;max-width:1200px;width:100%;height:80vh;align-items:stretch;justify-content:center}
-.left-column{display:flex;flex-direction:column;gap:1.5rem;padding:2rem;flex:1;justify-content:center}
+.left-column{display:flex;flex-direction:column;gap:1.5rem;padding:0;flex:1;justify-content:center}
 .left-column h1{font-family:'Space Grotesk',system-ui,sans-serif;font-size:3.5rem;font-weight:700;color:#F0F2F5;margin:0;line-height:1.1;letter-spacing:-1.5px}
 .hero-subtitle{font-size:1.1rem;color:#8B95A8;line-height:1.7;max-width:480px;margin:0}
 .hero-ctas{display:flex;align-items:center;gap:1.2rem;margin-top:0.5rem}
-.right-column{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1}
+.right-column{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;flex:1}
 .container{position:relative;width:100%;max-width:700px;aspect-ratio:1/1;min-width:300px}
 #networkCanvas{position:absolute;inset:0;width:100%;height:100%}
 #nodes{position:absolute;inset:0}
@@ -210,7 +210,8 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
     .nav-links.open{display:flex}
     .nav-links a{padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,.03)}
     .grid-container{flex-direction:column;height:auto;padding:1rem}
-    .left-column,.right-column{width:100%;padding:1rem}
+    .left-column{width:100%;padding:0}
+    .right-column{width:100%;padding:0;align-items:center}
     .left-column h1{font-size:2.2rem;text-align:center;letter-spacing:-1px}
     .hero-subtitle{text-align:center;margin:0 auto}
     .hero-ctas{justify-content:center;flex-wrap:wrap}

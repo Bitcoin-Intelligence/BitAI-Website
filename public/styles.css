@@ -137,7 +137,7 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 
 /* ----------  6. HOW IT WORKS ---------- */
 .how-it-works{padding:5rem 2rem;background:linear-gradient(180deg,#1a2a4a,#162344);color:white;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
-.how-it-works>.section-label{margin-bottom:2.5rem}
+.how-it-works>.section-label{margin-bottom:3rem}
 .how-it-works h2{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem;color:#DA7756}
 /* Two-track steps */
 .two-track-heading{font-size:1.5rem;font-weight:700;color:rgba(255,255,255,.7);text-align:center;margin:3rem 0 0.5rem}
@@ -151,14 +151,14 @@ body{margin:0;background:linear-gradient(135deg,#1e3c72,#295299);font-family:'Po
 
 /* Components (inside How It Works) */
 .components-top{display:grid;grid-template-columns:1fr 2fr;max-width:1400px;margin:0 auto;gap:1.5rem;align-items:start}
-.components-headline{display:flex;flex-direction:column;justify-content:flex-start}
+.components-headline{display:flex;flex-direction:column;justify-content:flex-start;text-align:left}
 .components-headline h2{font-size:3rem;font-weight:700;color:#DA7756;margin:0;line-height:1.15}
 .content-card{width:100%;display:flex;background:rgba(255,255,255,.1);border-radius:15px;overflow:hidden;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);box-shadow:0 10px 30px rgba(0,0,0,.2);transition:all .3s}
 .content-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.3);background:rgba(255,255,255,.15)}
 .content-card:hover .image-container img{transform:scale(1.05)}
 .image-container{flex:0 0 50%;overflow:hidden}
 .image-container img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.text-content{padding:2.5rem;display:flex;flex-direction:column;justify-content:center}
+.text-content{padding:2.5rem;display:flex;flex-direction:column;justify-content:center;text-align:left}
 .text-content h3{font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:white}
 .text-content p{font-size:1rem;color:rgba(255,255,255,.8);line-height:1.6;margin:0}
 .horizontal-cards{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;max-width:1400px;margin:2rem auto}

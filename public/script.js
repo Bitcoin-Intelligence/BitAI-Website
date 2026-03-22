@@ -224,7 +224,7 @@ requestAnimationFrame(animateStars);
 (function() {
     const el = document.getElementById('typewriter');
     if (!el) return;
-    const phrases = ['Uncensorable.', 'Unstoppable.', 'Powered by people.'];
+    const phrases = ['Uncensorable.', 'Unstoppable.'];
     let phraseIdx = 0, charIdx = 0, deleting = false;
 
     function type() {

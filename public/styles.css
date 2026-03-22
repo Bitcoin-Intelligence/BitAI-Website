@@ -41,7 +41,8 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
 .left-column{display:flex;flex-direction:column;gap:1.5rem;padding:0;flex:1;justify-content:center}
 .left-column h1{font-family:'Space Grotesk',system-ui,sans-serif;font-size:3.5rem;font-weight:700;color:#F0F2F5;margin:0;line-height:1.1;letter-spacing:-1.5px}
 .hero-subtitle{font-size:1.1rem;color:#8B95A8;line-height:1.7;max-width:480px;margin:0}
-.hero-punch{font-family:'Space Grotesk',system-ui,sans-serif;font-size:1.3rem;font-weight:700;color:#DA7756;margin:0;letter-spacing:0.5px}
+.hero-punch{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:600;color:#DA7756;margin:0;min-height:1.8em}
+.cursor{animation:blink .7s infinite;color:#DA7756;font-weight:300}
 .hero-ctas{display:flex;align-items:center;gap:1.2rem;margin-top:0.5rem}
 .right-column{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;flex:1}
 .container{position:relative;width:100%;max-width:700px;aspect-ratio:1/1;min-width:300px}
@@ -188,6 +189,8 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
 .footer-links a{color:#5A6478;text-decoration:none;font-size:0.8rem;transition:color .2s;padding:0.4rem 0;min-height:44px;display:flex;align-items:center;gap:0.4rem}
 .footer-links a:hover{color:#DA7756}
 .footer-links svg{flex-shrink:0}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 /* ----------  Reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){

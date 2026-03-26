@@ -1,19 +1,19 @@
 // script.js
 // ==========
 /* ----------------------------------------------------------------
-   DATA MODEL — Single network view (providers + consumers)
+   DATA MODEL — Single network view (neurons + users)
 ---------------------------------------------------------------- */
 const nodes = [
-    { id:1, components:['Desktop App','Local Agents','Local AI Models'], role:'provider' },
-    { id:2, components:['Desktop App','Local Agents'], role:'consumer' },
-    { id:3, components:['Desktop App','Local Agents','Local AI Models'], role:'provider' },
-    { id:4, components:['Desktop App','Local Agents'], role:'consumer' },
-    { id:5, components:['Desktop App','Local Agents','Local AI Models'], role:'provider' },
-    { id:6, components:['Desktop App','Local Agents'], role:'consumer' },
-    { id:7, components:['Desktop App','Local Agents','Local AI Models'], role:'provider' },
-    { id:8, components:['Desktop App','Local Agents'], role:'consumer' },
-    { id:9, components:['Desktop App','Local Agents','Local AI Models'], role:'provider' },
-    { id:10,components:['Desktop App','Local Agents'], role:'consumer' }
+    { id:1, components:['Desktop App','Local Agents','Local AI Models'], role:'neuron' },
+    { id:2, components:['Desktop App','Local Agents'], role:'user' },
+    { id:3, components:['Desktop App','Local Agents','Local AI Models'], role:'neuron' },
+    { id:4, components:['Desktop App','Local Agents'], role:'user' },
+    { id:5, components:['Desktop App','Local Agents','Local AI Models'], role:'neuron' },
+    { id:6, components:['Desktop App','Local Agents'], role:'user' },
+    { id:7, components:['Desktop App','Local Agents','Local AI Models'], role:'neuron' },
+    { id:8, components:['Desktop App','Local Agents'], role:'user' },
+    { id:9, components:['Desktop App','Local Agents','Local AI Models'], role:'neuron' },
+    { id:10,components:['Desktop App','Local Agents'], role:'user' }
 ];
 
 const connections = [
@@ -34,13 +34,13 @@ const detailPanel    = document.getElementById('detail-panel');
 ---------------------------------------------------------------- */
 nodes.forEach(node => {
     const el = document.createElement('div');
-    el.className = `node ${node.role === 'provider' ? 'provider-node' : 'consumer-node'}`;
+    el.className = `node ${node.role === 'neuron' ? 'provider-node' : 'consumer-node'}`;
     el.innerHTML = `
         <svg viewBox="0 0 24 24" width="40" height="40">
             <path d="M20 3H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6v2H8v2h8v-2h-2v-2h6
                      c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H4V5h16v12z"/>
         </svg>
-        <div class="node-label">${node.role === 'provider' ? 'Provider' : 'Consumer'}</div>`;
+        <div class="node-label">${node.role === 'neuron' ? 'Neuron' : 'User'}</div>`;
     el.addEventListener('mouseenter', () => showDetail(node));
     el.addEventListener('mouseleave', hideDetail);
     nodesContainer.appendChild(el);
@@ -105,9 +105,9 @@ function drawConnections() {
    DETAIL PANEL HELPERS
 ---------------------------------------------------------------- */
 function showDetail(node) {
-    const label = node.role === 'provider' ? 'Provider' : 'Consumer';
-    const statusClass = node.role === 'provider' ? 'active' : 'limited';
-    const statusText = node.role === 'provider' ? 'sovereign privacy' : 'network consumer';
+    const label = node.role === 'neuron' ? 'Neuron' : 'User';
+    const statusClass = node.role === 'neuron' ? 'active' : 'limited';
+    const statusText = node.role === 'neuron' ? 'sovereign privacy' : 'network user';
     detailPanel.innerHTML = `
         <h3>${label}</h3>
         <ul>
@@ -140,7 +140,7 @@ window.addEventListener('scroll', () => {
 const starCanvas = document.getElementById('starsCanvas');
 const starCtx    = starCanvas.getContext('2d');
 
-const STAR_DENSITY   = 12;
+const STAR_DENSITY   = 30;
 const STAR_MIN_SPEED = 0.03;
 const STAR_MAX_SPEED = 0.10;
 
@@ -166,7 +166,7 @@ function resizeStars() {
     stars = Array.from({ length: count }, () => ({
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        r: Math.random() * 1.5 + 0.2,
+        r: Math.random() * 1.0 + 0.2,
         s: Math.random() * (STAR_MAX_SPEED - STAR_MIN_SPEED) + STAR_MIN_SPEED
     }));
 }

@@ -115,7 +115,7 @@
 5. FOR PROVIDERS
    Section label: "FOR PROVIDERS" (gold mono uppercase)
    H2: "Power the Network"
-   Subtitle: "Share your spare compute. Stay private. Earn rewards."
+   Subtitle: "Lease your spare compute. Stay private. Earn rewards."
    Three benefit cards:
    - Earn Rewards: Get paid for compute you aren't using
    - Private Processing: Tasks run entirely on YOUR device. No cloud.

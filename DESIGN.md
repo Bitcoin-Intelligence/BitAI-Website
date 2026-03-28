@@ -91,9 +91,10 @@
    Fixed, transparent → blurred on scroll. Gold download button.
 
 2. HERO (full viewport)
-   H1: "AI, powered by people"
-   Subtitle: "A peer-to-peer network where AI lives on real devices,
-   not corporate clouds. Uncensorable. Unstoppable."
+   H1: "AI with no limits. No clouds. No gatekeepers."
+   Subtitle: "Analyze anything. Create without restriction. Automate everything.
+   Powered by a network of people, not a data center."
+   Typewriter: "Sandbox-secured. | Earn while you sleep. | 345 Neurons online."
    No bullet points — subtitle carries the message.
    CTAs: [Download App] [See How It Works →]
    Right: Network visualization — providers (gold) + consumers (teal)

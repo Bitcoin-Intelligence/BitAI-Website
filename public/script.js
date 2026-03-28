@@ -219,36 +219,5 @@ resizeStars();
 requestAnimationFrame(animateStars);
 
 /* ----------------------------------------------------------------
-   TYPEWRITER EFFECT
+   TYPEWRITER EFFECT (removed — hero copy is self-sufficient)
 ---------------------------------------------------------------- */
-(function() {
-    const el = document.getElementById('typewriter');
-    if (!el) return;
-    const phrases = ['Uncensorable.', 'Unstoppable.', 'Sandbox-secured.'];
-    let phraseIdx = 0, charIdx = 0, deleting = false;
-
-    function type() {
-        const phrase = phrases[phraseIdx];
-        if (!deleting) {
-            el.textContent = phrase.slice(0, charIdx + 1);
-            charIdx++;
-            if (charIdx === phrase.length) {
-                setTimeout(() => { deleting = true; type(); }, 2000);
-                return;
-            }
-            setTimeout(type, 80);
-        } else {
-            el.textContent = phrase.slice(0, charIdx);
-            charIdx--;
-            if (charIdx < 0) {
-                deleting = false;
-                charIdx = 0;
-                phraseIdx = (phraseIdx + 1) % phrases.length;
-                setTimeout(type, 500);
-                return;
-            }
-            setTimeout(type, 40);
-        }
-    }
-    setTimeout(type, 1000);
-})();

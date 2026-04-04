@@ -221,3 +221,59 @@ requestAnimationFrame(animateStars);
 /* ----------------------------------------------------------------
    TYPEWRITER EFFECT (removed — hero copy is self-sufficient)
 ---------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------
+   NETWORK HEALTH — live data from signaling server
+---------------------------------------------------------------- */
+
+const SIGNALING_URL = "https://signal.localagi.network";
+
+const TASK_GROUPS = [
+  { name: "Deep Research",      capabilities: "Web crawl, synthesis, fact-check",   types: ["research"],                                                    statusKey: "llm" },
+  { name: "Data Analysis",      capabilities: "Trends, anomalies, visualization",   types: ["data_science"],                                                statusKey: "llm" },
+  { name: "Financial Analysis", capabilities: "Market data, forecasts, reports",     types: ["crypto", "stock"],                                             statusKey: "llm" },
+  { name: "Code & Debug",       capabilities: "Generate, review, fix",              types: ["software_engineering", "web_development"],                      statusKey: "llm" },
+  { name: "Admin & Ops",        capabilities: "Scheduling, drafts, summaries",      types: ["administrative"],                                              statusKey: "llm" },
+  { name: "Image Creation",     capabilities: "Generate, edit, upscale",            types: ["image_generation_from_text", "image_generation_from_images"],   statusKey: "image_generation" },
+  { name: "Image Editing",      capabilities: "Transform, style, enhance",          types: ["image_generation_from_images"],                                statusKey: "image_editing" },
+  { name: "Video Production",   capabilities: "Generate, animate, composite",       types: ["video_generation_from_images"],                                statusKey: "i2v" },
+];
+
+async function loadNetworkHealth() {
+  try {
+    const resp = await fetch(SIGNALING_URL + "/usage/network-health");
+    if (!resp.ok) return;
+    const data = await resp.json();
+
+    // Populate stat cards
+    const cards = document.querySelectorAll(".stat-card .stat-value");
+    if (cards.length >= 4) {
+      cards[0].textContent = data.active_neurons.toLocaleString();
+      cards[1].textContent = data.tasks_submitted.toLocaleString();
+      cards[2].textContent = data.pickup_rate + "%";
+      cards[3].textContent = data.completion_rate + "%";
+    }
+
+    // Build type count lookup
+    const typeCounts = {};
+    for (const entry of data.by_type) {
+      typeCounts[entry.task_type] = entry.count;
+    }
+
+    // Populate table
+    const tbody = document.querySelector(".network-table tbody");
+    if (tbody) {
+      tbody.innerHTML = TASK_GROUPS.map(function (group) {
+        const count = group.types.reduce(function (sum, t) { return sum + (typeCounts[t] || 0); }, 0);
+        const online = data.capability_status[group.statusKey];
+        const badgeClass = online ? "online" : "busy";
+        const badgeText = online ? "Online" : "Offline";
+        return "<tr><td>" + group.name + "</td><td>" + group.capabilities + "</td><td>" + count + "</td><td><span class=\"status-badge " + badgeClass + "\">" + badgeText + "</span></td></tr>";
+      }).join("");
+    }
+  } catch (e) {
+    // Silent fail — hardcoded HTML remains as fallback
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadNetworkHealth);

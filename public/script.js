@@ -234,8 +234,8 @@ const TASK_GROUPS = [
   { name: "Financial Analysis", capabilities: "Market data, forecasts, reports",     types: ["crypto", "stock"],                                             statusKey: "llm" },
   { name: "Code & Debug",       capabilities: "Generate, review, fix",              types: ["software_engineering", "web_development"],                      statusKey: "llm" },
   { name: "Admin & Ops",        capabilities: "Scheduling, drafts, summaries",      types: ["administrative"],                                              statusKey: "llm" },
-  { name: "Image Creation",     capabilities: "Generate, edit, upscale",            types: ["image_generation_from_text", "image_generation_from_images"],   statusKey: "image_generation" },
-  { name: "Image Editing",      capabilities: "Transform, style, enhance",          types: ["image_generation_from_images"],                                statusKey: "image_editing" },
+  { name: "Image Creation",     capabilities: "Generate, edit, upscale",            types: ["image_generation_from_text"],            statusKey: "image_generation" },
+  { name: "Image Editing",      capabilities: "Transform, style, enhance",          types: ["image_generation_from_images"],          statusKey: "image_editing" },
   { name: "Video Production",   capabilities: "Generate, animate, composite",       types: ["video_generation_from_images"],                                statusKey: "i2v" },
 ];
 
@@ -274,9 +274,11 @@ async function loadNetworkHealth() {
     if (tbody) {
       tbody.innerHTML = TASK_GROUPS.map(function (group) {
         const count = group.types.reduce(function (sum, t) { return sum + (typeCounts[t] || 0); }, 0);
-        const online = data.capability_status[group.statusKey];
-        const badgeClass = online ? "online" : "busy";
-        const badgeText = online ? "Online" : "Offline";
+        const status = data.capability_status[group.statusKey] || "offline";
+        var badgeClass = "busy";
+        var badgeText = "Offline";
+        if (status === "online") { badgeClass = "online"; badgeText = "Online"; }
+        else if (status === "busy") { badgeClass = "busy"; badgeText = "Busy"; }
         return "<tr><td>" + group.name + "</td><td>" + group.capabilities + "</td><td>" + count + "</td><td><span class=\"status-badge " + badgeClass + "\">" + badgeText + "</span></td></tr>";
       }).join("");
     }

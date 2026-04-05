@@ -245,8 +245,17 @@ async function loadNetworkHealth() {
     if (!resp.ok) return;
     const data = await resp.json();
 
-    // Populate stat cards
-    const cards = document.querySelectorAll(".stat-card .stat-value");
+    // Populate social proof bar (.proof-stats)
+    var proofStats = document.querySelectorAll(".proof-stats .stat strong");
+    if (proofStats.length >= 4) {
+      proofStats[0].textContent = data.active_neurons.toLocaleString();
+      proofStats[1].textContent = data.tasks_submitted.toLocaleString();
+      proofStats[2].textContent = data.pickup_rate + "%";
+      proofStats[3].textContent = data.completion_rate + "%";
+    }
+
+    // Populate stat cards (Network Health section)
+    var cards = document.querySelectorAll(".stat-card .stat-value");
     if (cards.length >= 4) {
       cards[0].textContent = data.active_neurons.toLocaleString();
       cards[1].textContent = data.tasks_submitted.toLocaleString();

@@ -245,22 +245,27 @@ async function loadNetworkHealth() {
     if (!resp.ok) return;
     const data = await resp.json();
 
+    var n = data.active_neurons;
+    var t = data.tasks_submitted;
+
     // Populate social proof bar (.proof-stats)
-    var proofStats = document.querySelectorAll(".proof-stats .stat strong");
+    var proofStats = document.querySelectorAll(".proof-stats .stat");
     if (proofStats.length >= 4) {
-      proofStats[0].textContent = data.active_neurons.toLocaleString();
-      proofStats[1].textContent = data.tasks_submitted.toLocaleString();
-      proofStats[2].textContent = data.pickup_rate + "%";
-      proofStats[3].textContent = data.completion_rate + "%";
+      proofStats[0].innerHTML = '<span class="stat-dot"></span> <strong>' + n.toLocaleString() + "</strong> " + (n === 1 ? "Neuron" : "Neurons");
+      proofStats[1].innerHTML = "<strong>" + t.toLocaleString() + "</strong> " + (t === 1 ? "Task Submitted" : "Tasks Submitted");
+      proofStats[2].innerHTML = "<strong>" + data.pickup_rate + "%</strong> Picked Up";
+      proofStats[3].innerHTML = "<strong>" + data.completion_rate + "%</strong> Completed";
     }
 
     // Populate stat cards (Network Health section)
-    var cards = document.querySelectorAll(".stat-card .stat-value");
+    var cards = document.querySelectorAll(".stat-card");
     if (cards.length >= 4) {
-      cards[0].textContent = data.active_neurons.toLocaleString();
-      cards[1].textContent = data.tasks_submitted.toLocaleString();
-      cards[2].textContent = data.pickup_rate + "%";
-      cards[3].textContent = data.completion_rate + "%";
+      cards[0].querySelector(".stat-value").textContent = n.toLocaleString();
+      cards[0].querySelector(".stat-label-text").textContent = n === 1 ? "Active Neuron" : "Active Neurons";
+      cards[1].querySelector(".stat-value").textContent = t.toLocaleString();
+      cards[1].querySelector(".stat-label-text").textContent = t === 1 ? "Task Submitted" : "Tasks Submitted";
+      cards[2].querySelector(".stat-value").textContent = data.pickup_rate + "%";
+      cards[3].querySelector(".stat-value").textContent = data.completion_rate + "%";
     }
 
     // Build type count lookup

@@ -3,9 +3,18 @@ const path = require('path');
 
 const app = express();
 const PORT = 2000;
+const SIGNALING_URL = process.env.SIGNALING_URL || 'https://signal.localagi.network';
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || process.env.LOCALAGI_GOOGLE_CLIENT_ID || '';
 
 // Serve static files from the 'public' folder (adjust if your files are elsewhere)
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/runtime-config.json', (_req, res) => {
+  res.json({
+    signalingUrl: SIGNALING_URL,
+    googleClientId: GOOGLE_CLIENT_ID,
+  });
+});
 
 // Optional: Redirect root to index.html if needed
 app.get('/', (req, res) => {

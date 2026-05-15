@@ -44,6 +44,7 @@ function apiEls() {
     sidebarItems: Array.from(document.querySelectorAll(".api-sidebar-item")),
     managePanel: document.getElementById("api-panel-manage"),
     createPanel: document.getElementById("api-panel-create"),
+    creditsPanel: document.getElementById("api-panel-credits"),
     form: document.getElementById("api-key-form"),
     keyName: document.getElementById("api-key-name"),
     verifiedOnly: document.getElementById("verified-providers-only"),
@@ -55,6 +56,8 @@ function apiEls() {
     copyCreated: document.getElementById("api-copy-created"),
     copyToast: document.getElementById("api-copy-toast"),
     refreshBtn: document.getElementById("api-refresh-keys"),
+    addCreditsBtn: document.getElementById("api-add-credits"),
+    creditsBalance: document.getElementById("api-credits-balance"),
     tableBody: document.getElementById("api-key-table-body"),
     emptyState: document.getElementById("api-empty-state"),
     status: document.getElementById("api-status"),
@@ -168,6 +171,9 @@ function renderApiKeyDashboard() {
     els.accountCredits.textContent = typeof apiAuth.balance === "number"
       ? apiAuth.balance.toFixed(2) + " credits"
       : "Credits unavailable";
+    els.creditsBalance.textContent = typeof apiAuth.balance === "number"
+      ? Math.floor(apiAuth.balance).toLocaleString()
+      : "Credits unavailable";
   } else {
     closeAccountMenu();
     els.createdPanel.hidden = true;
@@ -194,14 +200,19 @@ function toggleAccountMenu() {
   accountButton.setAttribute("aria-expanded", open ? "true" : "false");
 }
 
-function showCopyToast() {
+function showToast(message) {
   const { copyToast } = apiEls();
   if (!copyToast) return;
   window.clearTimeout(copyToastTimer);
+  copyToast.textContent = message;
   copyToast.hidden = false;
   copyToastTimer = window.setTimeout(() => {
     copyToast.hidden = true;
   }, 1400);
+}
+
+function showCopyToast() {
+  showToast("Copied");
 }
 
 async function refreshApiBalance() {
@@ -266,13 +277,14 @@ async function handleGoogleCredential(response) {
 }
 
 function renderPanel(panel) {
-  activePanel = panel === "create" ? "create" : "manage";
+  activePanel = ["create", "manage", "credits"].includes(panel) ? panel : "create";
   const els = apiEls();
   els.sidebarItems.forEach(button => {
     button.classList.toggle("active", button.dataset.panel === activePanel);
   });
   els.managePanel.hidden = activePanel !== "manage";
   els.createPanel.hidden = activePanel !== "create";
+  els.creditsPanel.hidden = activePanel !== "credits";
 }
 
 function scopeLabel(scopes) {
@@ -441,6 +453,39 @@ async function revokeApiKey(keyId, name) {
   }
 }
 
+async function addCredits() {
+  if (!apiAuth) return;
+  const { addCreditsBtn } = apiEls();
+  addCreditsBtn.disabled = true;
+  setApiStatus("Adding credits...", "info");
+  try {
+    const data = await apiRequest("/credits/purchase", {
+      method: "POST",
+      body: JSON.stringify({ amount_dollars: 10 }),
+    });
+    if (data.checkout_url) {
+      window.location.href = data.checkout_url;
+      return;
+    }
+    if (typeof data.new_balance === "number") {
+      updateStoredApiAuth({
+        balance: data.new_balance,
+        total_spent: data.total_spent,
+        total_earned: data.total_earned,
+      });
+      renderApiKeyDashboard();
+    } else {
+      await refreshApiBalance();
+    }
+    setApiStatus("", "info");
+    showToast("Credits added");
+  } catch (e) {
+    setApiStatus(e.message || "Could not add credits", "error");
+  } finally {
+    addCreditsBtn.disabled = false;
+  }
+}
+
 function wireApiKeyDashboard() {
   const els = apiEls();
   els.form.addEventListener("submit", createApiKey);
@@ -471,6 +516,7 @@ function wireApiKeyDashboard() {
     }
   });
   els.refreshBtn.addEventListener("click", loadApiKeys);
+  els.addCreditsBtn.addEventListener("click", addCredits);
   els.createdClose.addEventListener("click", closeCreatedKeyModal);
   els.createdSaved.addEventListener("click", closeCreatedKeyModal);
   els.createdPanel.addEventListener("click", (event) => {
@@ -485,7 +531,10 @@ function wireApiKeyDashboard() {
     }
   });
   els.sidebarItems.forEach(button => {
-    button.addEventListener("click", () => renderPanel(button.dataset.panel));
+    button.addEventListener("click", () => {
+      renderPanel(button.dataset.panel);
+      if (button.dataset.panel === "credits") refreshApiBalance();
+    });
   });
   document.querySelectorAll(".api-preset").forEach(button => {
     button.addEventListener("click", () => {

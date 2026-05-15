@@ -57,6 +57,9 @@
                     <button type="button" class="api-sidebar-item" data-panel="manage">
                         <span>Manage Keys</span>
                     </button>
+                    <button type="button" class="api-sidebar-item" data-panel="credits">
+                        <span>Credits</span>
+                    </button>
                 </nav>
             </aside>
         </div>
@@ -125,6 +128,21 @@
                         <button type="submit" class="cta-primary api-create-btn" id="api-create-btn">Create Key</button>
                     </form>
 
+                </section>
+
+                <section class="api-detail-panel api-credits-panel" id="api-panel-credits" hidden>
+                    <div class="api-panel-title">
+                        <h2>Credits</h2>
+                        <p class="api-muted">Credits are shared across API and desktop network usage.</p>
+                    </div>
+                    <div class="api-credit-balance-card">
+                        <span>Available balance</span>
+                        <strong id="api-credits-balance">0.00 credits</strong>
+                    </div>
+                    <div class="api-credit-actions">
+                        <button type="button" class="cta-primary api-create-btn" id="api-add-credits">Add Credits</button>
+                        <p class="api-muted">Adds 1,000 credits in the current test flow.</p>
+                    </div>
                 </section>
             </div>
 

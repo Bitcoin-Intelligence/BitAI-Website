@@ -221,7 +221,7 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
 .api-panels{min-width:0}
 .api-detail-panel{background:#131B2E;border:1px solid rgba(255,255,255,.07);border-radius:10px;box-shadow:0 14px 40px rgba(0,0,0,.22);overflow:hidden}
 .api-manage-panel{padding:0}
-.api-create-panel{width:min(640px,100%);padding:1.7rem;box-sizing:border-box;margin:0 auto}
+.api-create-panel,.api-credits-panel{width:min(640px,100%);padding:1.7rem;box-sizing:border-box;margin:0 auto}
 .api-panel-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .api-panel-title h2{font-family:'Space Grotesk',system-ui,sans-serif;font-size:1.45rem;line-height:1.1;margin:0 0 0.4rem;color:#F4F4F5}
 .api-key-panel{background:#131B2E;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1.35rem;box-shadow:0 8px 24px rgba(0,0,0,.22)}
@@ -245,6 +245,12 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
 .api-toggle input:disabled+.api-toggle-ui{opacity:.45}
 .api-create-btn{width:100%;min-height:52px;font-size:0.98rem;border-radius:8px;background:#F4F4F5;color:#05060A;box-shadow:none}
 .api-create-btn:hover{background:#fff;box-shadow:none;transform:none}
+.api-create-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}
+.api-credit-balance-card{margin:1.25rem 0 1rem;background:#0B1120;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:1rem}
+.api-credit-balance-card span{display:block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:1.4px;color:#71717A;margin-bottom:0.4rem}
+.api-credit-balance-card strong{display:block;color:#F4F4F5;font-family:'Space Grotesk',system-ui,sans-serif;font-size:2rem;line-height:1.1}
+.api-credit-actions{display:flex;flex-direction:column;gap:0.7rem}
+.api-credit-actions .api-muted{text-align:center;font-size:0.84rem}
 .api-modal-open{overflow:hidden}
 .api-created-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:1.5rem}
 .api-created-backdrop{position:absolute;inset:0;background:rgba(5,8,15,.68);backdrop-filter:blur(8px)}
@@ -336,7 +342,7 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
     .api-page-main{grid-template-columns:1fr;padding:88px 1rem 1rem}
     .api-left-rail{position:static}
     .api-sidebar-nav{display:grid;grid-template-columns:1fr 1fr}
-    .api-create-panel{padding:1.25rem}
+    .api-create-panel,.api-credits-panel{padding:1.25rem}
     .api-panel-header{flex-direction:column;align-items:stretch}
     .api-key-table{min-width:860px}
     .footer-content{flex-direction:column-reverse;text-align:center;gap:0.5rem}

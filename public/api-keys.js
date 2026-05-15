@@ -95,6 +95,12 @@ function saveApiAuth(auth) {
   localStorage.setItem(API_AUTH_STORAGE_KEY, JSON.stringify(auth));
 }
 
+function updateStoredApiAuth(fields) {
+  if (!apiAuth) return;
+  apiAuth = { ...apiAuth, ...fields };
+  localStorage.setItem(API_AUTH_STORAGE_KEY, JSON.stringify(apiAuth));
+}
+
 function clearApiAuth() {
   apiAuth = null;
   localStorage.removeItem(API_AUTH_STORAGE_KEY);
@@ -196,6 +202,23 @@ function showCopyToast() {
   copyToastTimer = window.setTimeout(() => {
     copyToast.hidden = true;
   }, 1400);
+}
+
+async function refreshApiBalance() {
+  if (!apiAuth) return;
+  try {
+    const data = await apiRequest("/credits/balance");
+    if (typeof data.balance === "number") {
+      updateStoredApiAuth({
+        balance: data.balance,
+        total_spent: data.total_spent,
+        total_earned: data.total_earned,
+      });
+      renderApiKeyDashboard();
+    }
+  } catch (e) {
+    // Keep the cached session usable if the balance refresh is temporarily unavailable.
+  }
 }
 
 function renderGoogleSignInButtons() {
@@ -436,6 +459,7 @@ function wireApiKeyDashboard() {
   els.accountButton.addEventListener("click", (event) => {
     event.stopPropagation();
     toggleAccountMenu();
+    if (!els.accountDropdown.hidden) refreshApiBalance();
   });
   document.addEventListener("click", (event) => {
     if (!els.accountMenu.contains(event.target)) closeAccountMenu();
@@ -476,7 +500,9 @@ async function initApiKeyDashboard() {
   apiAuth = loadApiAuth();
   wireApiKeyDashboard();
   renderApiKeyDashboard();
-  if (apiAuth) await loadApiKeys();
+  if (apiAuth) {
+    await Promise.all([refreshApiBalance(), loadApiKeys()]);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", initApiKeyDashboard);

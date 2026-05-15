@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Keys - Local AGI</title>
+    <meta name="description" content="Create and manage Local AGI relay API keys." />
+    <link rel="icon" type="image/png" href="assets/transparent-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="api-page">
+    <header class="site-header scrolled api-site-header">
+        <a href="/" class="logo">
+            <img src="assets/transparent-logo.png" alt="Local AGI logo" />
+            <span class="project-name">Local AGI</span>
+        </a>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/#network">Network</a>
+            <a href="/api-keys" aria-current="page">API Keys</a>
+            <div class="api-header-account">
+                <button type="button" class="api-secondary-btn api-header-signin" id="api-header-signin">Sign in</button>
+                <div class="api-account-menu" id="api-account-menu" hidden>
+                    <button type="button" class="api-account-button" id="api-account-button" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20 21a8 8 0 0 0-16 0"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <div class="api-account-dropdown" id="api-account-dropdown" role="menu" hidden>
+                        <div class="api-account-info">
+                            <span>Account</span>
+                            <strong id="api-account-name">Signed in</strong>
+                            <em id="api-account-credits">Credits unavailable</em>
+                        </div>
+                        <button type="button" class="api-secondary-btn api-header-signout" id="api-signout-btn" role="menuitem">Sign out</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="api-page-main">
+        <h1 class="api-page-title">API Keys</h1>
+        <div class="api-left-rail">
+            <aside class="api-sidebar">
+                <nav class="api-sidebar-nav" aria-label="API key sections">
+                    <button type="button" class="api-sidebar-item active" data-panel="create">
+                        <span>Create New Key</span>
+                    </button>
+                    <button type="button" class="api-sidebar-item" data-panel="manage">
+                        <span>Manage Keys</span>
+                    </button>
+                </nav>
+            </aside>
+        </div>
+
+        <section class="api-workspace">
+            <div class="api-auth-gate" id="api-auth-gate">
+                <div class="api-key-panel api-auth-gate-panel">
+                    <h2>Sign in with Google</h2>
+                    <p class="api-muted">Sign in to create and manage your API keys.</p>
+                    <div id="google-signin-button-gate" class="google-signin-button"></div>
+                </div>
+            </div>
+
+            <div class="api-panels" id="api-panels" hidden>
+                <section class="api-detail-panel api-manage-panel" id="api-panel-manage" hidden>
+                    <div class="api-table-wrap">
+                        <table class="api-key-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Prefix</th>
+                                    <th>Scope</th>
+                                    <th>Node</th>
+                                    <th>Last Used</th>
+                                    <th>Status</th>
+                                    <th class="api-table-action-head">
+                                        <button type="button" class="api-icon-btn" id="api-refresh-keys" aria-label="Refresh API keys">
+                                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="api-key-table-body"></tbody>
+                        </table>
+                    </div>
+                    <div class="api-empty-state" id="api-empty-state">No API keys.</div>
+                </section>
+
+                <section class="api-detail-panel api-create-panel active" id="api-panel-create">
+                    <form class="api-key-form" id="api-key-form">
+                        <div class="api-panel-title">
+                            <h2>Create Key</h2>
+                            <p class="api-muted">Choose a scoped key preset.</p>
+                        </div>
+
+                        <label class="api-field">
+                            <span>Name</span>
+                            <input type="text" id="api-key-name" maxlength="80" autocomplete="off" placeholder="Local AGI key" required>
+                        </label>
+
+                        <div class="api-field">
+                            <span>Preset</span>
+                            <div class="api-segmented" role="radiogroup" aria-label="API key preset">
+                                <button type="button" class="api-preset active" data-preset="inference" role="radio" aria-checked="true">Consume Intelligence</button>
+                                <button type="button" class="api-preset" data-preset="provider" role="radio" aria-checked="false">Lease Intelligence</button>
+                                <button type="button" class="api-preset" data-preset="dual" role="radio" aria-checked="false">Both</button>
+                            </div>
+                        </div>
+
+                        <label class="api-toggle">
+                            <input type="checkbox" id="verified-providers-only">
+                            <span class="api-toggle-ui"></span>
+                            <span>Verified providers only</span>
+                        </label>
+
+                        <button type="submit" class="cta-primary api-create-btn" id="api-create-btn">Create Key</button>
+                    </form>
+
+                </section>
+            </div>
+
+            <div class="api-status" id="api-status" role="status" aria-live="polite" hidden></div>
+        </section>
+
+        <div class="api-created-modal" id="api-created-key" hidden>
+            <div class="api-created-backdrop" data-close-created></div>
+            <section class="api-created-dialog" role="dialog" aria-modal="true" aria-labelledby="api-created-title">
+                <div class="api-panel-header">
+                    <div>
+                        <h3 id="api-created-title">New API key created successfully</h3>
+                    </div>
+                    <button type="button" class="api-icon-btn" id="api-created-close" aria-label="Close new key modal">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <div class="api-secret-row">
+                    <code id="api-created-secret"></code>
+                    <button type="button" class="api-icon-btn" id="api-copy-created" aria-label="Copy API key">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </div>
+                <p class="api-created-note">Please save the API key to a safe place. You won't see it again.</p>
+                <button type="button" class="api-saved-btn" id="api-created-saved">I saved it</button>
+            </section>
+        </div>
+
+        <div class="api-copy-toast" id="api-copy-toast" role="status" aria-live="polite" hidden>Copied</div>
+    </main>
+
+    <script src="api-keys.js"></script>
+</body>
+</html>

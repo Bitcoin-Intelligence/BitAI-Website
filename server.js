@@ -2,9 +2,13 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 2000;
+const PORT = Number(process.env.PORT || 2000);
 const SIGNALING_URL = process.env.SIGNALING_URL || 'https://signal.localagi.network';
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || process.env.LOCALAGI_GOOGLE_CLIENT_ID || '';
+
+app.get(/^\/api-keys\/?$/, (_req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'api-keys.html'));
+});
 
 // Serve static files from the 'public' folder (adjust if your files are elsewhere)
 app.use(express.static(path.join(__dirname, 'public')));

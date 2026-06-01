@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grid Private Networks</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { background: #f7f7f4; color: #171717; }
+      main { max-width: 1080px; margin: 0 auto; padding: 32px 20px; }
+      .grid-shell { display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start; }
+      .panel { background: #fff; border: 1px solid #dad7cf; border-radius: 8px; padding: 16px; }
+      .stack { display: grid; gap: 12px; }
+      label { display: grid; gap: 6px; font-size: 14px; color: #444; }
+      input, select { width: 100%; box-sizing: border-box; border: 1px solid #bdb8ad; border-radius: 6px; padding: 10px; font: inherit; }
+      button { border: 1px solid #1f1f1f; border-radius: 6px; background: #1f1f1f; color: #fff; padding: 10px 12px; font: inherit; cursor: pointer; }
+      button.secondary { background: #fff; color: #1f1f1f; }
+      pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #f0eee8; border-radius: 6px; padding: 12px; }
+      .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+      .network { border-top: 1px solid #e5e1d8; padding-top: 14px; margin-top: 14px; }
+      .muted { color: #666; }
+      @media (max-width: 800px) { .grid-shell { grid-template-columns: 1fr; } }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Grid Private Networks</h1>
+        <p class="muted">Manage allowlists and copy setup commands for private AI intranets.</p>
+      </header>
+      <section class="grid-shell">
+        <div class="panel stack">
+          <div id="google-button"></div>
+          <button id="dev-login" class="secondary" type="button">Use dev login</button>
+          <label>
+            Dev email
+            <input id="dev-email" value="owner@example.com" />
+          </label>
+          <label>
+            Device id
+            <input id="device-id" />
+          </label>
+          <button id="refresh" type="button">Refresh Networks</button>
+          <p id="status" class="muted"></p>
+        </div>
+        <div class="panel stack">
+          <form id="create-form" class="stack">
+            <h2>Create network metadata</h2>
+            <label>Name <input id="network-name" placeholder="team-a" /></label>
+            <label>LAN signaling URL <input id="lan-url" placeholder="http://192.168.1.10:8090" /></label>
+            <button type="submit">Create</button>
+          </form>
+          <div id="networks"></div>
+        </div>
+      </section>
+    </main>
+    <script src="/grid-networks.js"></script>
+  </body>
+</html>
+

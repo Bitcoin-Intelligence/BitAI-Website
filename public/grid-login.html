@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grid CLI Login</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { background: #f7f7f4; color: #171717; }
+      main { max-width: 520px; margin: 0 auto; padding: 48px 20px; }
+      .panel { background: #fff; border: 1px solid #dad7cf; border-radius: 8px; padding: 18px; }
+      .stack { display: grid; gap: 14px; }
+      .muted { color: #666; }
+      .code { font: 600 28px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0; }
+      label { display: grid; gap: 6px; font-size: 14px; color: #444; }
+      input { width: 100%; box-sizing: border-box; border: 1px solid #bdb8ad; border-radius: 6px; padding: 10px; font: inherit; }
+      button { border: 1px solid #1f1f1f; border-radius: 6px; background: #1f1f1f; color: #fff; padding: 10px 12px; font: inherit; cursor: pointer; }
+      button.secondary { background: #fff; color: #1f1f1f; }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="panel stack">
+        <header class="stack">
+          <h1>Grid CLI Login</h1>
+          <p class="muted">Sign in with Google to authorize this terminal session.</p>
+        </header>
+        <div>
+          <p class="muted">Code</p>
+          <p id="code" class="code"></p>
+        </div>
+        <div id="google-button"></div>
+        <div id="dev-auth" class="stack" hidden>
+          <label>
+            Dev email
+            <input id="dev-email" value="owner@example.com" />
+          </label>
+          <button id="dev-login" class="secondary" type="button">Use dev login</button>
+        </div>
+        <p id="status" class="muted"></p>
+      </section>
+    </main>
+    <script src="/grid-login.js"></script>
+  </body>
+</html>

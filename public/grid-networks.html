@@ -32,11 +32,13 @@
       <section class="grid-shell">
         <div class="panel stack">
           <div id="google-button"></div>
-          <button id="dev-login" class="secondary" type="button">Use dev login</button>
-          <label>
-            Dev email
-            <input id="dev-email" value="owner@example.com" />
-          </label>
+          <div id="dev-auth" class="stack" hidden>
+            <button id="dev-login" class="secondary" type="button">Use dev login</button>
+            <label>
+              Dev email
+              <input id="dev-email" value="owner@example.com" />
+            </label>
+          </div>
           <label>
             Device id
             <input id="device-id" />
@@ -58,4 +60,3 @@
     <script src="/grid-networks.js"></script>
   </body>
 </html>
-

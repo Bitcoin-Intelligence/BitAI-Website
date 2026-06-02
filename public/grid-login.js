@@ -34,7 +34,6 @@
     const cfg = await res.json();
     state.apiUrl = cfg.gridControlPlaneUrl || 'https://api.localagi.network';
     state.googleClientId = cfg.googleClientId || '';
-    $('dev-auth').hidden = !cfg.gridDevAuthEnabled;
     if (!state.userCode) {
       setStatus('Missing login code. Run `grid auth login` again.');
       return;
@@ -55,14 +54,6 @@
       setStatus('Google Sign-In is not configured.');
     }
   }
-
-  $('dev-login').addEventListener('click', async () => {
-    try {
-      await approve(`dev:${$('dev-email').value.trim()}`);
-    } catch (err) {
-      setStatus(err.message);
-    }
-  });
 
   loadConfig().catch((err) => setStatus(err.message));
 })();

@@ -26,7 +26,6 @@
     const cfg = await res.json();
     state.apiUrl = cfg.gridControlPlaneUrl || 'https://api.localagi.network';
     state.googleClientId = cfg.googleClientId || '';
-    $('dev-auth').hidden = !cfg.gridDevAuthEnabled;
     localStorage.setItem('gridDeviceId', state.deviceId);
     $('device-id').value = state.deviceId;
     if (window.google && state.googleClientId) {
@@ -121,9 +120,6 @@ OPENAI_BASE_URL=${escapeHtml(network.lan_signaling_url)}/relay/v1</pre>
     }[ch]));
   }
 
-  $('dev-login').addEventListener('click', async () => {
-    await loginWithToken(`dev:${$('dev-email').value.trim()}`);
-  });
   $('refresh').addEventListener('click', refreshNetworks);
   $('create-form').addEventListener('submit', async (event) => {
     event.preventDefault();

@@ -93,10 +93,14 @@
                 <h1>AI with no limits.<br>No clouds. No gatekeepers.</h1>
                 <p class="hero-subtitle">Create without restriction. Analyze anything. Automate everything. Powered by a network of people, not a data center.</p>
                 <div class="hero-ctas">
-                    <div class="hero-action-row">
-                        <button type="button" class="cta-primary">Download App</button>
+                    <div class="hero-cta-grid">
+                        <a href="https://localagi.network/download/mac" class="cta-primary download-app-btn">
+                            <svg class="download-app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span class="download-app-label">Download App</span>
+                        </a>
                         <a href="/api-keys" class="cta-outline">Get API Key</a>
                     </div>
+                    <p class="hero-download-note" hidden>Available for <strong>macOS</strong> today &mdash; Windows &amp; Linux coming soon.</p>
                     <a href="#how-it-works" class="cta-secondary">See How It Works <span class="arrow">&rarr;</span></a>
                 </div>
             </div>
@@ -392,7 +396,7 @@
             </div>
             <div class="content-card">
                 <div class="image-container">
-                    <img src="assets/localagi-network.png" alt="Local AGI Network">
+                    <img src="assets/localagi-network.png" alt="Local AGI Network" class="zoomable">
                 </div>
                 <div class="text-content">
                     <h3>Local AGI Network</h3>
@@ -402,21 +406,21 @@
         </div>
         <div class="horizontal-cards">
             <div class="horizontal-card">
-                <img src="assets/app.png" alt="Desktop App" class="card-image">
+                <img src="assets/app.png" alt="Desktop App" class="card-image zoomable">
                 <div class="card-content">
                     <h3>Desktop App</h3>
                     <p>The user-friendly app that simplifies the multi-agent system's complexity, enabling anyone to effortlessly delegate complex real-world tasks to Local AGI agents.</p>
                 </div>
             </div>
             <div class="horizontal-card">
-                <img src="assets/local-agents.png" alt="Local AI Agents" class="card-image">
+                <img src="assets/local-agents.png" alt="Local AI Agents" class="card-image zoomable">
                 <div class="card-content">
                     <h3>Local AI Agents</h3>
                     <p>Local AGI agents operate locally within a secure sandbox, easing concerns about scale, privacy and security while preventing data errors caused by AI hallucination.</p>
                 </div>
             </div>
             <div class="horizontal-card">
-                <img src="assets/local-models.png" alt="Local AI Models" class="card-image">
+                <img src="assets/local-models.png" alt="Local AI Models" class="card-image zoomable">
                 <div class="card-content">
                     <h3>Local AI Models</h3>
                     <p>Local AI Models provide sovereign privacy (as data always stays on local device), unlimited usage, and consistent performance.</p>
@@ -429,7 +433,7 @@
             <div class="track">
                 <h3 class="track-title">Users</h3>
                 <div class="track-step"><span class="step-number">1</span> Download the app</div>
-                <div class="track-step"><span class="step-number">2</span> Give a task to the agents</div>
+                <div class="track-step"><span class="step-number">2</span> Send a message to the agents</div>
                 <div class="track-step"><span class="step-number">3</span> Get results</div>
             </div>
             <div class="track">
@@ -464,7 +468,10 @@
             </div>
         </div>
         <p class="provider-closing">Same app. Lease your Neuron's intelligence to get started.</p>
-        <button class="cta-primary" type="button">Download App</button>
+        <a href="https://localagi.network/download/mac" class="cta-primary download-app-btn">
+            <svg class="download-app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span class="download-app-label">Download App</span>
+        </a>
     </section>
 
     <!-- 7. NETWORK STATS -->
@@ -527,6 +534,12 @@
     <div id="video-modal" class="video-modal" onclick="closeVideoModal(event)">
         <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
         <video id="modal-video" controls autoplay loop></video>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div id="image-modal" class="image-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button class="image-modal-close" aria-label="Close image preview">&times;</button>
+        <img id="image-modal-img" src="" alt="">
     </div>
     <script src="script.js"></script>
 </body>

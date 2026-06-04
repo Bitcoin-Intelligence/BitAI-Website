@@ -135,6 +135,54 @@ window.addEventListener('scroll', () => {
 });
 
 /* ----------------------------------------------------------------
+   DOWNLOAD APP — OS detection
+   Drop real installer URLs in below as each platform's build ships,
+   and flip `available` to true. Visitors on an available OS get a
+   native "Download for <OS>" link; everyone else is offered the
+   default build with a "coming soon" note.
+---------------------------------------------------------------- */
+const DOWNLOADS = {
+    mac:     { label: 'Download for macOS',   url: 'https://localagi.network/download/mac',   available: true  }, // .dmg
+    windows: { label: 'Download for Windows', url: 'https://localagi.network/download/win',   available: false }, // .exe
+    linux:   { label: 'Download for Linux',   url: 'https://localagi.network/download/linux', available: false }, // .AppImage
+};
+const DEFAULT_DOWNLOAD = 'mac'; // build offered when the visitor's OS has no build yet (incl. mobile/unknown)
+
+function detectOS() {
+    const data = navigator.userAgentData;
+    const platform = ((data && data.platform) || navigator.platform || '').toLowerCase();
+    const ua = (navigator.userAgent || '').toLowerCase();
+    const hay = platform + ' ' + ua;
+    if (/android/.test(hay)) return 'android';
+    if (/iphone|ipad|ipod/.test(hay)) return 'ios';
+    // iPadOS 13+ reports as a Mac — disambiguate via touch points.
+    if (/mac/.test(hay) && navigator.maxTouchPoints > 1) return 'ios';
+    if (/mac|darwin/.test(hay)) return 'mac';
+    if (/win/.test(hay)) return 'windows';
+    if (/linux|x11|cros/.test(hay)) return 'linux';
+    return 'unknown';
+}
+
+function applyDownloadDetection() {
+    const detected = DOWNLOADS[detectOS()];
+    const native = detected && detected.available ? detected : null;
+    const offered = native || DOWNLOADS[DEFAULT_DOWNLOAD];
+
+    document.querySelectorAll('.download-app-btn').forEach(btn => {
+        if (offered && offered.url) btn.setAttribute('href', offered.url);
+        const label = btn.querySelector('.download-app-label');
+        if (label) label.textContent = native ? native.label : 'Download App';
+    });
+
+    // Hero-only note: shown to visitors whose OS has no native build yet.
+    document.querySelectorAll('.hero-download-note').forEach(note => {
+        note.hidden = Boolean(native);
+    });
+}
+
+applyDownloadDetection();
+
+/* ----------------------------------------------------------------
    ANIMATED STARFIELD BACKGROUND
 ---------------------------------------------------------------- */
 const starCanvas = document.getElementById('starsCanvas');
@@ -293,3 +341,46 @@ async function loadNetworkHealth() {
 }
 
 document.addEventListener("DOMContentLoaded", loadNetworkHealth);
+
+/* ----------------------------------------------------------------
+   IMAGE LIGHTBOX — click any .zoomable image to view it full-size
+---------------------------------------------------------------- */
+(function () {
+    const modal = document.getElementById('image-modal');
+    if (!modal) return;
+    const modalImg = document.getElementById('image-modal-img');
+    const closeBtn = modal.querySelector('.image-modal-close');
+    let lastFocused = null;
+
+    function openImageModal(img) {
+        lastFocused = img;
+        modalImg.src = img.currentSrc || img.src;
+        modalImg.alt = img.alt || '';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+    }
+    function closeImageModal() {
+        modal.classList.remove('active');
+        modalImg.removeAttribute('src');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.zoomable').forEach(function (img) {
+        img.setAttribute('role', 'button');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('aria-label', (img.alt || 'Image') + ' — view full size');
+        img.addEventListener('click', function () { openImageModal(img); });
+        img.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openImageModal(img); }
+        });
+    });
+
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal || e.target === closeBtn) closeImageModal();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeImageModal();
+    });
+})();

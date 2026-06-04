@@ -285,6 +285,8 @@ function renderPanel(panel) {
   els.managePanel.hidden = activePanel !== "manage";
   els.createPanel.hidden = activePanel !== "create";
   els.creditsPanel.hidden = activePanel !== "credits";
+  const createAbout = document.getElementById("api-create-about");
+  if (createAbout) createAbout.hidden = activePanel !== "create";
 }
 
 function scopeLabel(scopes) {
@@ -470,8 +472,6 @@ async function addCredits() {
     if (typeof data.new_balance === "number") {
       updateStoredApiAuth({
         balance: data.new_balance,
-        total_spent: data.total_spent,
-        total_earned: data.total_earned,
       });
       renderApiKeyDashboard();
     } else {

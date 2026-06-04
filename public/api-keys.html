@@ -67,8 +67,9 @@
         <section class="api-workspace">
             <div class="api-auth-gate" id="api-auth-gate">
                 <div class="api-key-panel api-auth-gate-panel">
-                    <h2>Sign in with Google</h2>
-                    <p class="api-muted">Sign in to create and manage your API keys.</p>
+                    <h2>Get your API key</h2>
+                    <p class="api-muted">An API key lets you call Local AGI's <strong>language &amp; media AI models</strong> &mdash; text, vision, image, and video &mdash; over the network from your own apps and agents. Works with <strong>Hermes</strong>, <strong>OpenClaw</strong>, and any OpenAI-compatible client.</p>
+                    <p class="api-muted">Sign in with Google to create and manage your keys.</p>
                     <div id="google-signin-button-gate" class="google-signin-button"></div>
                 </div>
             </div>
@@ -98,11 +99,16 @@
                     <div class="api-empty-state" id="api-empty-state">No API keys.</div>
                 </section>
 
+                <div class="api-key-about api-create-about" id="api-create-about">
+                    <p>This key calls Local AGI's <strong>language &amp; media AI models</strong> &mdash; text, vision, image, and video &mdash; over the network via simple API calls.</p>
+                    <p>Use it in <strong>Hermes</strong>, <strong>OpenClaw</strong>, or any OpenAI-compatible client.</p>
+                </div>
+
                 <section class="api-detail-panel api-create-panel active" id="api-panel-create">
                     <form class="api-key-form" id="api-key-form">
                         <div class="api-panel-title">
                             <h2>Create Key</h2>
-                            <p class="api-muted">Choose a scoped key preset.</p>
+                            <p class="api-muted">Use Local AGI models from your own apps and agents.</p>
                         </div>
 
                         <label class="api-field">

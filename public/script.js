@@ -276,16 +276,18 @@ requestAnimationFrame(animateStars);
 
 const SIGNALING_URL = "https://signal.localagi.network";
 
-const TASK_GROUPS = [
-  { name: "Deep Research",      capabilities: "Web crawl, synthesis, fact-check",   types: ["research"],                                                    statusKey: "llm" },
-  { name: "Data Analysis",      capabilities: "Trends, anomalies, visualization",   types: ["data_science"],                                                statusKey: "llm" },
-  { name: "Financial Analysis", capabilities: "Market data, forecasts, reports",     types: ["crypto", "stock"],                                             statusKey: "llm" },
-  { name: "Code & Debug",       capabilities: "Generate, review, fix",              types: ["software_engineering", "web_development"],                      statusKey: "llm" },
-  { name: "Admin & Ops",        capabilities: "Scheduling, drafts, summaries",      types: ["administrative"],                                              statusKey: "llm" },
-  { name: "Image Creation",     capabilities: "Generate, edit, upscale",            types: ["image_generation_from_text"],            statusKey: "image_generation" },
-  { name: "Image Editing",      capabilities: "Transform, style, enhance",          types: ["image_generation_from_images"],          statusKey: "image_editing" },
-  { name: "Video Production",   capabilities: "Generate, animate, composite",       types: ["video_generation_from_images"],                                statusKey: "i2v" },
+const AGENT_TYPES = [
+  { label: "Hermes",          type: "general" },
+  { label: "Browser",         type: "administrative" },
+  { label: "Image Generator", type: "image_generation_from_text" },
+  { label: "Image Editor",    type: "image_generation_from_images" },
+  { label: "Video Generator", type: "video_generation_from_images" },
 ];
+
+function pct(numerator, denominator) {
+  if (!denominator) return 0;
+  return Math.round((numerator / denominator) * 100);
+}
 
 async function loadNetworkHealth() {
   try {
@@ -293,46 +295,46 @@ async function loadNetworkHealth() {
     if (!resp.ok) return;
     const data = await resp.json();
 
-    var n = data.active_neurons;
-    var t = data.tasks_submitted;
+    var n = data.active_neurons || 0;
+    var t = data.tasks_submitted || 0;
+    var completionRate = data.completion_rate || 0;
+    var cancelRate = data.cancel_by_user_rate || 0;
 
-    // Populate social proof bar (.proof-stats)
+    // Social proof bar (.proof-stats)
     var proofStats = document.querySelectorAll(".proof-stats .stat");
     if (proofStats.length >= 4) {
       proofStats[0].innerHTML = '<span class="stat-dot"></span> <strong>' + n.toLocaleString() + "</strong> " + (n === 1 ? "Neuron" : "Neurons");
       proofStats[1].innerHTML = "<strong>" + t.toLocaleString() + "</strong> " + (t === 1 ? "Task Submitted" : "Tasks Submitted");
-      proofStats[2].innerHTML = "<strong>" + data.pickup_rate + "%</strong> Picked Up";
-      proofStats[3].innerHTML = "<strong>" + data.completion_rate + "%</strong> Completed";
+      proofStats[2].innerHTML = "<strong>" + completionRate + "%</strong> Completed";
+      proofStats[3].innerHTML = "<strong>" + cancelRate + "%</strong> Canceled";
     }
 
-    // Populate stat cards (Network Health section)
+    // Stat cards (Network Health section)
     var cards = document.querySelectorAll(".stat-card");
     if (cards.length >= 4) {
       cards[0].querySelector(".stat-value").textContent = n.toLocaleString();
       cards[0].querySelector(".stat-label-text").textContent = n === 1 ? "Active Neuron" : "Active Neurons";
       cards[1].querySelector(".stat-value").textContent = t.toLocaleString();
       cards[1].querySelector(".stat-label-text").textContent = t === 1 ? "Task Submitted" : "Tasks Submitted";
-      cards[2].querySelector(".stat-value").textContent = data.pickup_rate + "%";
-      cards[3].querySelector(".stat-value").textContent = data.completion_rate + "%";
+      cards[2].querySelector(".stat-value").textContent = completionRate + "%";
+      cards[3].querySelector(".stat-value").textContent = cancelRate + "%";
     }
 
-    // Build type count lookup
-    const typeCounts = {};
-    for (const entry of data.by_type) {
-      typeCounts[entry.task_type] = entry.count;
+    // Per-task-type lookup: { submitted, completed, canceled }
+    const byType = {};
+    for (const entry of (data.by_type || [])) {
+      byType[entry.task_type] = entry;
     }
 
-    // Populate table
+    // Agent-type table: Submitted | Completion Rate | Cancel by User Rate
     const tbody = document.querySelector(".network-table tbody");
     if (tbody) {
-      tbody.innerHTML = TASK_GROUPS.map(function (group) {
-        const count = group.types.reduce(function (sum, t) { return sum + (typeCounts[t] || 0); }, 0);
-        const status = data.capability_status[group.statusKey] || "offline";
-        var badgeClass = "busy";
-        var badgeText = "Offline";
-        if (status === "online") { badgeClass = "online"; badgeText = "Online"; }
-        else if (status === "busy") { badgeClass = "busy"; badgeText = "Busy"; }
-        return "<tr><td>" + group.name + "</td><td>" + group.capabilities + "</td><td>" + count + "</td><td><span class=\"status-badge " + badgeClass + "\">" + badgeText + "</span></td></tr>";
+      tbody.innerHTML = AGENT_TYPES.map(function (agent) {
+        const row = byType[agent.type] || { submitted: 0, completed: 0, canceled: 0 };
+        const submitted = row.submitted || 0;
+        return "<tr><td>" + agent.label + "</td><td>" + submitted +
+               "</td><td>" + pct(row.completed, submitted) + "%</td><td>" +
+               pct(row.canceled, submitted) + "%</td></tr>";
       }).join("");
     }
   } catch (e) {

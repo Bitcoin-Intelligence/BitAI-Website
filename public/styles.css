@@ -97,10 +97,12 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
 .section-header{text-align:center;margin-bottom:3rem}
 .section-header h2{font-family:'Space Grotesk',system-ui,sans-serif;font-size:2.25rem;font-weight:700;margin-bottom:1rem;color:#F0F2F5;letter-spacing:-0.5px}
 .section-header p{font-size:1.05rem;color:#8B95A8;max-width:700px;margin:0 auto}
-.use-case-category{max-width:1200px;margin:0 auto 3rem}
+.use-case-category{max-width:960px;margin:0 auto 3rem}
 .category-label{font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#5A6478;margin-bottom:1.5rem;padding-left:0.75rem;border-left:3px solid #DA7756}
-.videos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:960px;margin:0 auto}
 .video-card{background:#131B2E;border-radius:8px;overflow:visible;transition:transform .2s,box-shadow .2s;border:1px solid rgba(255,255,255,.06)}
+.video-placeholder.is-todo{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:#0B1220;border:1px dashed rgba(255,255,255,.15);cursor:default}
+.video-todo-label{color:rgba(255,255,255,.45);font-size:.8rem;letter-spacing:.05em;text-transform:uppercase}
 .video-placeholder{position:relative;width:100%;overflow:hidden;border-radius:8px 8px 0 0;cursor:pointer}
 .video-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
 .video-placeholder img,.video-placeholder video{width:100%;display:block}

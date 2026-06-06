@@ -1,6 +1,6 @@
 /* styles.css — Phase 2: Design System */
 /* ----------  Global ---------- */
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:40px}/* offset fixed header so anchored sections aren't hidden */
 body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;color:#F0F2F5}
 
 /* ----------  Shared ---------- */

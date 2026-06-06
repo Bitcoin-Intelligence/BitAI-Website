@@ -76,19 +76,32 @@ function layoutNetwork() {
         node.el.style.top  = `${node.y}px`;
     });
 
-    drawConnections();
+    // Animated mode redraws every rAF frame; only static (reduced-motion) needs a redraw here.
+    if (prefersReducedMotion) drawConnections();
 }
 
 window.addEventListener('resize', layoutNetwork);
-layoutNetwork();
 
 /* ----------------------------------------------------------------
-   CANVAS DRAW
+   CANVAS DRAW — animated request/response packets + neuron "absorb" pop
+     • orange packet = REQUEST,  travels User → Neuron
+     • neuron pops bigger (zoom up) then eases back as it absorbs
+     • teal packet   = RESPONSE, travels Neuron → User
+   Respects prefers-reduced-motion (static dashed lines fallback).
 ---------------------------------------------------------------- */
-function drawConnections() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 2;
+const PACKET     = { ORANGE: '#DA7756', TEAL: '#38BFA0' };
+const CYCLE_MS   = 6000;
+const REQ_FRAC   = 0.42;
+const PROC_FRAC  = 0.10;
+const ABSORB_MAX = 1.18;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+function absorbScale(t) { return 1 + (ABSORB_MAX - 1) * (1 - t) * Math.cos(t * Math.PI / 2); }
+
+function drawBaseLines() {
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.lineWidth = 1.5;
     ctx.setLineDash([5, 5]);
     connections.forEach(([fromId, toId]) => {
         const from = nodes.find(n => n.id === fromId);
@@ -100,6 +113,89 @@ function drawConnections() {
     });
     ctx.setLineDash([]);
 }
+
+function drawPacket(x, y, color) {
+    ctx.save();
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 14;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+}
+
+function drawArrow(from, to, color) {
+    const x = lerp(from.x, to.x, 0.80);
+    const y = lerp(from.y, to.y, 0.80);
+    const ang = Math.atan2(to.y - from.y, to.x - from.x);
+    const s = 9;
+    ctx.save();
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - s * Math.cos(ang - 0.42), y - s * Math.sin(ang - 0.42));
+    ctx.lineTo(x - s * Math.cos(ang + 0.42), y - s * Math.sin(ang + 0.42));
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+}
+
+function drawProcessingGlow(x, y, t) {
+    ctx.save();
+    ctx.globalAlpha = Math.sin(t * Math.PI) * 0.5;
+    ctx.fillStyle = PACKET.ORANGE;
+    ctx.shadowColor = PACKET.ORANGE;
+    ctx.shadowBlur = 28;
+    ctx.beginPath();
+    ctx.arc(x, y, 16, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+}
+
+function drawConnections(now) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBaseLines();
+
+    // Reduced-motion: keep the original static look.
+    if (prefersReducedMotion) {
+        nodes.forEach(n => { if (n.role === 'neuron') n.el.style.transform = 'translate(-50%,-50%) scale(1)'; });
+        return;
+    }
+
+    nodes.forEach(n => { if (n.role === 'neuron') n._scale = 1; });
+
+    connections.forEach(([userId, neuronId], i) => {
+        const user   = nodes.find(n => n.id === userId);   // even id → user
+        const neuron = nodes.find(n => n.id === neuronId); // odd id  → neuron
+        const phase  = (((now || 0) + i * 900) % CYCLE_MS) / CYCLE_MS;
+
+        if (phase < REQ_FRAC) {                         // REQUEST: user → neuron
+            const t = phase / REQ_FRAC;
+            drawPacket(lerp(user.x, neuron.x, t), lerp(user.y, neuron.y, t), PACKET.ORANGE);
+            drawArrow(user, neuron, PACKET.ORANGE);
+        } else if (phase < REQ_FRAC + PROC_FRAC) {      // neuron absorbs + pops bigger
+            const pt = (phase - REQ_FRAC) / PROC_FRAC;
+            drawProcessingGlow(neuron.x, neuron.y, pt);
+            const sc = absorbScale(pt);
+            if (sc > (neuron._scale || 1)) neuron._scale = sc;
+        } else {                                        // RESPONSE: neuron → user
+            const t = (phase - REQ_FRAC - PROC_FRAC) / (1 - REQ_FRAC - PROC_FRAC);
+            drawPacket(lerp(neuron.x, user.x, t), lerp(neuron.y, user.y, t), PACKET.TEAL);
+            drawArrow(neuron, user, PACKET.TEAL);
+        }
+    });
+
+    nodes.forEach(n => {
+        if (n.role === 'neuron') n.el.style.transform = `translate(-50%,-50%) scale(${(n._scale || 1).toFixed(3)})`;
+    });
+
+    requestAnimationFrame(drawConnections);
+}
+
+// Position nodes now that prefers-reduced-motion is known, then start the single animation loop.
+layoutNetwork();
+if (!prefersReducedMotion) requestAnimationFrame(drawConnections);
 
 /* ----------------------------------------------------------------
    DETAIL PANEL HELPERS

@@ -318,6 +318,20 @@ body{margin:0;background:#0B1120;font-family:'DM Sans',system-ui,sans-serif;colo
 .api-status.error{border-color:rgba(232,111,111,.25);color:#E86F6F;background:rgba(232,111,111,.08)}
 
 /* ----------  9. FOOTER ---------- */
+/* ----------  FAQ  ---------- */
+.faq{padding:80px 2rem;background:#0B1120;color:#F0F2F5;text-align:center;border-top:1px solid rgba(255,255,255,.04)}
+.faq h2{font-family:'Space Grotesk',system-ui,sans-serif;font-size:2.25rem;font-weight:700;margin-bottom:0.5rem;color:#F0F2F5;letter-spacing:-0.5px}
+.faq-list{max-width:760px;margin:2.5rem auto 0;text-align:left;display:flex;flex-direction:column;gap:0.75rem}
+.faq-item{background:#131B2E;border:1px solid rgba(255,255,255,.06);border-radius:8px;overflow:hidden;transition:border-color .2s}
+.faq-item[open]{border-color:rgba(218,119,86,.35)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.25rem;font-family:'Space Grotesk',system-ui,sans-serif;font-size:1rem;font-weight:500;color:#F0F2F5;transition:color .2s}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:#DA7756}
+.faq-item summary:focus-visible{outline:2px solid #DA7756;outline-offset:-2px;border-radius:8px}
+.faq-item summary::after{content:'+';flex:0 0 auto;font-size:1.4rem;line-height:1;color:#DA7756}
+.faq-item[open] summary::after{content:'\2212'}
+.faq-answer{padding:0 1.25rem 1.2rem;color:#8B95A8;font-size:0.95rem;line-height:1.6}
+.faq-answer p{margin:0}
 .site-footer{padding:0.8rem 2rem;background:#0A0E17;color:#F0F2F5;border-top:1px solid rgba(255,255,255,.04)}
 .footer-content{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto}
 .footer-copy{font-size:0.75rem;color:#3A4258;margin:0}

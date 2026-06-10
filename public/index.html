@@ -82,6 +82,7 @@
             <a href="#use-cases">Use Cases</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#network">Network</a>
+            <a href="#faq">FAQ</a>
         </nav>
     </header>
 
@@ -101,7 +102,7 @@
                         <a href="/api-keys" class="cta-outline">Get API Key</a>
                     </div>
                     <p class="hero-download-note" hidden>Available for <strong>macOS</strong> today &mdash; Windows &amp; Linux coming soon.</p>
-                    <a href="#how-it-works" class="cta-secondary">See How It Works <span class="arrow">&rarr;</span></a>
+                    <a href="#how-it-works" class="cta-secondary">See how it works <span class="arrow">&rarr;</span></a>
                 </div>
             </div>
             <div class="right-column">
@@ -516,6 +517,91 @@
             </div>
         </div>
 
+        <div class="privacy-block" id="privacy-levels">
+            <span class="section-label">3 Privacy Levels</span>
+            <h3 class="privacy-block-title">Choose how your AI runs</h3>
+            <p class="privacy-block-sub">From fully on your own device, to a trusted circle of friends, to the open Local AGI network &mdash; each level is a different way to get and give compute.</p>
+            <p class="pl-legend"><span><i class="pl-dot pl-dot-cap"></i> Capable device</span><span><i class="pl-dot pl-dot-inc"></i> Needs compute</span></p>
+
+            <div class="pl-cards">
+                <article class="pl-card" style="--acc:#C8D0DC">
+                    <div class="pl-card-body">
+                        <div class="pl-card-head"><span class="pl-lv">Level 1</span><h4>Local AI</h4></div>
+                        <p>Have a capable device? Run AI models directly on it. Your work never leaves your machine &mdash; full privacy, full control.</p>
+                        <span class="pl-pill">&#128274; Nothing leaves your device</span>
+                    </div>
+                    <div class="pl-diagram">
+                        <svg viewBox="0 0 168 124" role="img" aria-label="A single capable device running AI on its own.">
+                            <circle class="pl-spin pl-boundary" cx="84" cy="62" r="44"/>
+                            <circle class="pl-pulse" cx="84" cy="62" r="26" fill="none" stroke="#C8D0DC" stroke-width="1" opacity=".22"/>
+                            <g transform="translate(84,56)">
+                                <rect x="-17" y="-12" width="34" height="24" rx="3.5" fill="#131B2E" stroke="#C8D0DC" stroke-width="1.7"/>
+                                <line x1="-7" y1="19" x2="7" y2="19" stroke="#C8D0DC" stroke-width="1.7" stroke-linecap="round"/>
+                                <line x1="0" y1="12" x2="0" y2="19" stroke="#C8D0DC" stroke-width="1.7"/>
+                                <circle class="pl-pulse pl-node-cap" cx="0" cy="0" r="4.5"/>
+                            </g>
+                            <g transform="translate(116,34)">
+                                <rect x="-7" y="-4" width="14" height="11" rx="2.5" fill="#0B1120" stroke="#C8D0DC" stroke-width="1.3"/>
+                                <path d="M-3.5 -4 v-3 a3.5 3.5 0 0 1 7 0 v3" fill="none" stroke="#C8D0DC" stroke-width="1.3"/>
+                            </g>
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="pl-card" style="--acc:#38BFA0">
+                    <div class="pl-card-body">
+                        <div class="pl-card-head"><span class="pl-lv">Level 2</span><h4>Private Network</h4></div>
+                        <p>Family or friends form a private network. Capable devices run models for the weaker ones in the group &mdash; all traffic end-to-end encrypted, so privacy stays inside the circle.</p>
+                        <span class="pl-pill">&#128274; End-to-end encrypted</span>
+                    </div>
+                    <div class="pl-diagram">
+                        <svg viewBox="0 0 168 124" role="img" aria-label="One capable device running AI for several weaker devices inside an encrypted private group.">
+                            <rect class="pl-boundary" x="6" y="12" width="156" height="100" rx="20"/>
+                            <line class="pl-flow" x1="52" y1="62" x2="116" y2="30"/>
+                            <line class="pl-flow" x1="52" y1="62" x2="126" y2="62"/>
+                            <line class="pl-flow" x1="52" y1="62" x2="116" y2="94"/>
+                            <circle class="pl-node-inc" cx="116" cy="30" r="7"/>
+                            <circle class="pl-node-inc" cx="126" cy="62" r="7"/>
+                            <circle class="pl-node-inc" cx="116" cy="94" r="7"/>
+                            <circle class="pl-node-cap" cx="52" cy="62" r="13"/>
+                            <circle cx="52" cy="62" r="13" fill="none" stroke="#38BFA0" stroke-width="6" opacity=".15"/>
+                            <g transform="translate(89,62)">
+                                <rect x="-6" y="-3.5" width="12" height="9" rx="2" fill="#0B1120" stroke="#38BFA0" stroke-width="1.2"/>
+                                <path d="M-3 -3.5 v-2.6 a3 3 0 0 1 6 0 v2.6" fill="none" stroke="#38BFA0" stroke-width="1.2"/>
+                            </g>
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="pl-card" style="--acc:#E8A830">
+                    <div class="pl-card-body">
+                        <div class="pl-card-head"><span class="pl-lv">Level 3</span><h4>Public Network</h4></div>
+                        <p>Capable devices lease spare compute to anyone on the open peer-to-peer network for non-sensitive tasks &mdash; and earn money in return.</p>
+                        <span class="pl-pill">&#128176; Earn for spare compute</span>
+                    </div>
+                    <div class="pl-diagram">
+                        <svg viewBox="0 0 168 124" role="img" aria-label="A capable device leasing compute across an open public network and earning rewards in return.">
+                            <line class="pl-flow" x1="50" y1="64" x2="108" y2="24"/>
+                            <line class="pl-flow" x1="50" y1="64" x2="138" y2="50"/>
+                            <line class="pl-flow" x1="50" y1="64" x2="128" y2="92"/>
+                            <line class="pl-flow" x1="50" y1="64" x2="96" y2="104"/>
+                            <circle class="pl-node-inc" cx="108" cy="24" r="6.5"/>
+                            <circle class="pl-node-inc" cx="138" cy="50" r="6.5"/>
+                            <circle class="pl-node-inc" cx="128" cy="92" r="6.5"/>
+                            <circle class="pl-node-inc" cx="96" cy="104" r="6.5"/>
+                            <circle class="pl-node-cap" cx="50" cy="64" r="13"/>
+                            <circle cx="50" cy="64" r="13" fill="none" stroke="#E8A830" stroke-width="6" opacity=".15"/>
+                            <g>
+                                <circle r="7" fill="#0B1120" stroke="#E8A830" stroke-width="1.6"/>
+                                <text y="3.2" text-anchor="middle" fill="#E8A830" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="600">$</text>
+                                <animateMotion dur="2.6s" repeatCount="indefinite" path="M138 50 L50 64"/>
+                            </g>
+                        </svg>
+                    </div>
+                </article>
+            </div>
+        </div>
+
         <h3 class="two-track-heading">Two paths, one app</h3>
         <div class="two-track">
             <div class="track">
@@ -605,7 +691,140 @@
         </div>
     </section>
 
-    <!-- 8. FOOTER -->
+    <!-- 8. FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Local AGI?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Local AGI is a private AI agent app and a peer-to-peer network. You run AI agents to analyze data, create images and video, automate tasks, and run research workflows, and you choose where the AI runs: on your own device, inside a trusted private network, or on the public Local AGI network of devices (Neurons) instead of a central data center." }
+            },
+            {
+                "@type": "Question",
+                "name": "How is Local AGI different from cloud AI tools?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Most AI tools send your requests to one company's cloud servers, which raises privacy, cost, usage-limit, and control concerns. Local AGI is local-first and gives you control over where AI runs: your own device, a trusted private network, or the public Local AGI network." }
+            },
+            {
+                "@type": "Question",
+                "name": "Who is Local AGI for?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Individuals, creators, analysts, founders, agencies, labs, teams, and privacy-conscious communities who want AI agents for research, content, data analysis, automation, image and video creation, and business workflows, with more control over where their work runs." }
+            },
+            {
+                "@type": "Question",
+                "name": "What can Local AGI do?",
+                "acceptedAnswer": { "@type": "Answer", "text": "It covers use cases across data analysis, stock and crypto analysis, image creation and editing, video creation, deep research, and administrative automation." }
+            },
+            {
+                "@type": "Question",
+                "name": "Why not just use ChatGPT or Claude?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Those are excellent general assistants. Local AGI is for people who want local-first agents, private workflows, saved artifacts, and task automation that runs from their own machine." }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the 3 privacy levels?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Local AGI offers three levels of privacy so you can choose where AI runs. Level 1, Local AI, runs entirely on your own device. Level 2, Private Network, uses a private network of approved nodes that communicate with end-to-end encryption. Level 3, Public Network, uses the public Local AGI network for broader access and more available compute on general tasks." }
+            },
+            {
+                "@type": "Question",
+                "name": "When should I use Local AI, Private Network, or Public Network?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Use Local AI for maximum control, when work should stay on your own device. Use Private Network when approved devices need to share compute securely. Use Public Network when you want broader access and more available providers for general, non-sensitive tasks." }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my work private by default?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Local AGI is local-first by default. Local AI models run on your device and agents work in a secure sandbox, so sensitive work can stay on your machine. You decide when to move beyond your device to a private network or the public network." }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Private Network communication encrypted?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Communication between approved nodes in a Private Network is end-to-end encrypted." }
+            },
+            {
+                "@type": "Question",
+                "name": "Who can join my Private Network?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Only nodes approved by the network owner can join. The owner controls which providers are trusted inside the network." }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it fully reliable?",
+                "acceptedAnswer": { "@type": "Answer", "text": "AI agents still need human verification, especially for live news, finance, and legal topics. Local AGI surfaces evidence, confidence levels, and source links so you can review claims before acting on them." }
+            },
+            {
+                "@type": "Question",
+                "name": "Does it replace people?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. It works best as an assistant that drafts, researches, summarizes, and prepares work for your review." }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a Neuron, and how do they earn rewards?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A Neuron is a device on the network that contributes spare compute to run models and agents for others. From the same app you can switch into Provide mode to run tasks and earn, while keeping things private and on-device." }
+            },
+            {
+                "@type": "Question",
+                "name": "Which platforms are supported?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The desktop app is available for macOS today, with Windows and Linux coming soon." }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I get started?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Download the app, give an agent a task, and review the results. That's it." }
+            }
+        ]
+    }
+    </script>
+
+    <section class="faq" id="faq">
+        <span class="section-label">FAQ</span>
+        <h2>Frequently asked questions</h2>
+        <div class="faq-list">
+            <h3 class="faq-group">About</h3>
+            <details class="faq-item">
+                <summary>What is Local AGI?</summary>
+                <div class="faq-answer"><p>Local AGI is a private AI agent app <em>and</em> a peer-to-peer network. You run AI agents to analyze data, create images and video, automate tasks, and run research workflows &mdash; and you choose where the AI runs: on your own device, inside a trusted private network, or on the public Local AGI network of devices (Neurons) instead of a central data center.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>How is Local AGI different from cloud AI tools?</summary>
+                <div class="faq-answer"><p>Most AI tools send your requests to one company&rsquo;s cloud servers, which raises privacy, cost, usage-limit, and control concerns. Local AGI is local-first and gives you control over where AI runs &mdash; your own device, a trusted private network, or the public Local AGI network.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>Who is Local AGI for?</summary>
+                <div class="faq-answer"><p>Individuals, creators, analysts, founders, agencies, labs, teams, and privacy-conscious communities who want AI agents for research, content, data analysis, automation, image and video creation, and business workflows &mdash; with more control over where their work runs.</p></div>
+            </details>
+
+            <h3 class="faq-group">Privacy &amp; the 3 levels</h3>
+            <details class="faq-item">
+                <summary>What are the 3 privacy levels?</summary>
+                <div class="faq-answer"><p>Local AGI offers three levels of privacy so you can choose where AI runs. <strong>Level 1 &mdash; Local AI</strong> runs entirely on your own device. <strong>Level 2 &mdash; Private Network</strong> uses a private network of approved nodes that communicate with end-to-end encryption. <strong>Level 3 &mdash; Public Network</strong> uses the public Local AGI network for broader access and more available compute on general tasks.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>When should I use Local AI, Private Network, or Public Network?</summary>
+                <div class="faq-answer"><p>Use <strong>Local AI</strong> for maximum control, when work should stay on your own device. Use <strong>Private Network</strong> when approved devices need to share compute securely. Use <strong>Public Network</strong> when you want broader access and more available providers for general, non-sensitive tasks.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>Is my work private by default?</summary>
+                <div class="faq-answer"><p>Yes &mdash; Local AGI is local-first by default. Local AI models run on your device and agents work in a secure sandbox, so sensitive work can stay on your machine. You decide when to move beyond your device to a private network or the public network.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>Is Private Network communication encrypted?</summary>
+                <div class="faq-answer"><p>Yes. Communication between approved nodes in a Private Network is end-to-end encrypted.</p></div>
+            </details>
+
+            <h3 class="faq-group">Practical &amp; trust</h3>
+            <details class="faq-item">
+                <summary>Is it fully reliable?</summary>
+                <div class="faq-answer"><p>AI agents still need human verification &mdash; especially for live news, finance, and legal topics. Local AGI surfaces evidence, confidence levels, and source links so you can review claims before acting on them.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>How do I get started?</summary>
+                <div class="faq-answer"><p>Download the app, give an agent a task, and review the results. That&rsquo;s it.</p></div>
+            </details>
+        </div>
+    </section>
+
+    <!-- 9. FOOTER -->
     <footer class="site-footer">
         <div class="footer-content">
             <p class="footer-copy">&copy; 2026 Local AGI</p>

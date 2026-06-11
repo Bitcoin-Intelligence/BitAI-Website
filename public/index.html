@@ -81,14 +81,13 @@
         <nav class="nav-links">
             <a href="#use-cases">Use Cases</a>
             <a href="#how-it-works">How It Works</a>
-            <a href="#network">Network</a>
-            <a href="#faq">FAQ</a>
+            <a href="#privacy-levels">3 Privacy Levels</a>
+            <a href="#network">Public Network</a>
         </nav>
     </header>
 
     <!-- 2. HERO -->
     <main class="top-fold" id="hero">
-        <canvas id="starsCanvas"></canvas>
         <div class="grid-container">
             <div class="left-column">
                 <h1>AI with no limits.<br>No clouds. No gatekeepers.</h1>
@@ -490,6 +489,7 @@
                 <div class="text-content">
                     <h3>Local AGI Network</h3>
                     <p>The Local AGI network is powered by high-performance devices running the Local AGI desktop app. These devices provide intelligence for the entire platform, allowing less powerful devices to utilize Local AGI agents when they lack the resources to run local AI models.</p>
+                    <p>Local AGI supports two network modes: private and public, each with different <a href="#privacy-levels" class="inline-link">privacy tradeoffs</a>.</p>
                 </div>
             </div>
         </div>
@@ -520,29 +520,24 @@
         <div class="privacy-block" id="privacy-levels">
             <span class="section-label">3 Privacy Levels</span>
             <h3 class="privacy-block-title">Choose how your AI runs</h3>
-            <p class="privacy-block-sub">From fully on your own device, to a trusted circle of friends, to the open Local AGI network &mdash; each level is a different way to get and give compute.</p>
+            <p class="privacy-block-sub">From fully on your own device, to a trusted circle of friends, to the open Local AGI network. Each level is a different way to get and give compute.</p>
             <p class="pl-legend"><span><i class="pl-dot pl-dot-cap"></i> Capable device</span><span><i class="pl-dot pl-dot-inc"></i> Needs compute</span></p>
 
             <div class="pl-cards">
                 <article class="pl-card" style="--acc:#C8D0DC">
                     <div class="pl-card-body">
                         <div class="pl-card-head"><span class="pl-lv">Level 1</span><h4>Local AI</h4></div>
-                        <p>Have a capable device? Run AI models directly on it. Your work never leaves your machine &mdash; full privacy, full control.</p>
+                        <p>Have a capable device? Run AI models directly on it. Your work never leaves your machine. Full privacy, full control.</p>
                         <span class="pl-pill"><svg class="pl-pill-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Nothing leaves your device</span>
                     </div>
                     <div class="pl-diagram">
                         <svg viewBox="0 0 168 124" role="img" aria-label="A single capable device running AI on its own.">
-                            <circle class="pl-boundary" cx="84" cy="62" r="44"/>
-                            <circle class="pl-pulse" cx="84" cy="62" r="26" fill="none" stroke="#C8D0DC" stroke-width="1" opacity=".22"/>
-                            <g transform="translate(84,56)">
-                                <rect x="-17" y="-12" width="34" height="24" rx="3.5" fill="#1A2540" stroke="#C8D0DC" stroke-width="1.7"/>
-                                <line x1="-7" y1="19" x2="7" y2="19" stroke="#C8D0DC" stroke-width="1.7" stroke-linecap="round"/>
-                                <line x1="0" y1="12" x2="0" y2="19" stroke="#C8D0DC" stroke-width="1.7"/>
-                                <circle class="pl-pulse pl-node-cap" cx="0" cy="0" r="4.5"/>
-                            </g>
-                            <g transform="translate(116,34)">
-                                <rect x="-7" y="-4" width="14" height="11" rx="2.5" fill="#0B1120" stroke="#C8D0DC" stroke-width="1.3"/>
-                                <path d="M-3.5 -4 v-3 a3.5 3.5 0 0 1 7 0 v3" fill="none" stroke="#C8D0DC" stroke-width="1.3"/>
+                            <circle class="pl-boundary" cx="84" cy="62" r="56"/>
+                            <g transform="translate(84,58)">
+                                <rect x="-25" y="-21" width="50" height="42" rx="5" fill="#1A2540" stroke="#C8D0DC" stroke-width="2"/>
+                                <line x1="0" y1="21" x2="0" y2="29" stroke="#C8D0DC" stroke-width="2"/>
+                                <line x1="-11" y1="29" x2="11" y2="29" stroke="#C8D0DC" stroke-width="2" stroke-linecap="round"/>
+                                <circle class="pl-node-cap" cx="0" cy="0" r="13"/>
                             </g>
                         </svg>
                     </div>
@@ -551,7 +546,7 @@
                 <article class="pl-card" style="--acc:#38BFA0">
                     <div class="pl-card-body">
                         <div class="pl-card-head"><span class="pl-lv">Level 2</span><h4>Private Network</h4></div>
-                        <p>Family or friends form a private network. Capable devices run models for the weaker ones in the group &mdash; all traffic end-to-end encrypted, so privacy stays inside the circle.</p>
+                        <p>Family or friends form a private network. Capable devices run models for the weaker ones in the group, with all traffic end-to-end encrypted, so privacy stays inside the circle.</p>
                         <span class="pl-pill"><svg class="pl-pill-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> End-to-end encrypted</span>
                     </div>
                     <div class="pl-diagram">
@@ -576,7 +571,7 @@
                 <article class="pl-card" style="--acc:#DA7756">
                     <div class="pl-card-body">
                         <div class="pl-card-head"><span class="pl-lv">Level 3</span><h4>Public Network</h4></div>
-                        <p>Capable devices lease spare compute to anyone on the open peer-to-peer network for non-sensitive tasks &mdash; and earn money in return.</p>
+                        <p>Capable devices lease spare compute to anyone on the open peer-to-peer network for non-sensitive tasks and earn money in return.</p>
                         <span class="pl-pill"><svg class="pl-pill-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg> Earn for spare compute</span>
                     </div>
                     <div class="pl-diagram">
@@ -602,7 +597,16 @@
             </div>
         </div>
 
-        <h3 class="two-track-heading">Two paths, one app</h3>
+    </section>
+
+    <!-- 5b. THREE PATHS -->
+    <section class="paths" id="paths">
+        <span class="section-label">Three paths, one app</span>
+        <h2>Same app, whichever path you take. Download to get started.</h2>
+        <a href="https://localagi.network/download/mac" class="cta-primary download-app-btn">
+            <svg class="download-app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span class="download-app-label">Download App</span>
+        </a>
         <div class="two-track">
             <div class="track">
                 <h3 class="track-title">Users</h3>
@@ -611,47 +615,24 @@
                 <div class="track-step"><span class="step-number">3</span> Get results</div>
             </div>
             <div class="track">
-                <h3 class="track-title">Neurons</h3>
+                <h3 class="track-title">Private Neurons</h3>
+                <div class="track-step"><span class="step-number">1</span> Download the app</div>
+                <div class="track-step"><span class="step-number">2</span> Share your Neuron's intelligence</div>
+                <div class="track-step"><span class="step-number">3</span> Power a private network for friends and family with unlimited usage, staying private</div>
+            </div>
+            <div class="track">
+                <h3 class="track-title">Public Neurons</h3>
                 <div class="track-step"><span class="step-number">1</span> Download the app</div>
                 <div class="track-step"><span class="step-number">2</span> Lease your Neuron's intelligence</div>
-                <div class="track-step"><span class="step-number">3</span> Earn while staying private</div>
+                <div class="track-step"><span class="step-number">3</span> Earn while staying private, with unlimited usage</div>
             </div>
         </div>
-    </section>
-
-    <!-- 6. FOR PROVIDERS -->
-    <section class="for-providers" id="for-providers">
-        <span class="section-label">FOR NEURONS</span>
-        <h2>Power the Network</h2>
-        <p class="section-subtitle">Lease your spare compute. Stay private. Earn rewards.</p>
-        <div class="provider-cards">
-            <div class="provider-card">
-                <div class="provider-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DA7756" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
-                <h3>Earn Rewards</h3>
-                <p>Get paid for compute you aren't using.</p>
-            </div>
-            <div class="provider-card">
-                <div class="provider-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DA7756" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                <h3>Private Processing</h3>
-                <p>Tasks run entirely on YOUR device. No cloud.</p>
-            </div>
-            <div class="provider-card">
-                <div class="provider-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DA7756" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"></path></svg></div>
-                <h3>Unlimited Usage</h3>
-                <p>Use AI agents without limits while providing.</p>
-            </div>
-        </div>
-        <p class="provider-closing">Same app. Lease your Neuron's intelligence to get started.</p>
-        <a href="https://localagi.network/download/mac" class="cta-primary download-app-btn">
-            <svg class="download-app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span class="download-app-label">Download App</span>
-        </a>
     </section>
 
     <!-- 7. NETWORK STATS -->
     <section class="network-stats" id="network">
         <span class="section-label">NETWORK</span>
-        <h2>Network Health</h2>
+        <h2>Public Network Health</h2>
         <div class="stats-cards">
             <div class="stat-card">
                 <div class="stat-value">0</div>

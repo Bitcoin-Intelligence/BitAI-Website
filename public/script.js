@@ -84,12 +84,12 @@ window.addEventListener('resize', layoutNetwork);
 
 /* ----------------------------------------------------------------
    CANVAS DRAW — animated request/response packets + neuron "absorb" pop
-     • orange packet = REQUEST,  travels User → Neuron
+     • request packet  travels User → Neuron
      • neuron pops bigger (zoom up) then eases back as it absorbs
-     • teal packet   = RESPONSE, travels Neuron → User
+     • response packet travels Neuron → User
    Respects prefers-reduced-motion (static dashed lines fallback).
 ---------------------------------------------------------------- */
-const PACKET     = { ORANGE: '#DA7756', TEAL: '#38BFA0' };
+const PACKET     = { REQUEST: '#F0F2F5', RESPONSE: '#C8D0DC' };
 const CYCLE_MS   = 6000;
 const REQ_FRAC   = 0.42;
 const PROC_FRAC  = 0.10;
@@ -144,8 +144,8 @@ function drawArrow(from, to, color) {
 function drawProcessingGlow(x, y, t) {
     ctx.save();
     ctx.globalAlpha = Math.sin(t * Math.PI) * 0.5;
-    ctx.fillStyle = PACKET.ORANGE;
-    ctx.shadowColor = PACKET.ORANGE;
+    ctx.fillStyle = PACKET.REQUEST;
+    ctx.shadowColor = PACKET.REQUEST;
     ctx.shadowBlur = 28;
     ctx.beginPath();
     ctx.arc(x, y, 16, 0, Math.PI * 2);
@@ -172,8 +172,8 @@ function drawConnections(now) {
 
         if (phase < REQ_FRAC) {                         // REQUEST: user → neuron
             const t = phase / REQ_FRAC;
-            drawPacket(lerp(user.x, neuron.x, t), lerp(user.y, neuron.y, t), PACKET.ORANGE);
-            drawArrow(user, neuron, PACKET.ORANGE);
+            drawPacket(lerp(user.x, neuron.x, t), lerp(user.y, neuron.y, t), PACKET.REQUEST);
+            drawArrow(user, neuron, PACKET.REQUEST);
         } else if (phase < REQ_FRAC + PROC_FRAC) {      // neuron absorbs + pops bigger
             const pt = (phase - REQ_FRAC) / PROC_FRAC;
             drawProcessingGlow(neuron.x, neuron.y, pt);
@@ -181,8 +181,8 @@ function drawConnections(now) {
             if (sc > (neuron._scale || 1)) neuron._scale = sc;
         } else {                                        // RESPONSE: neuron → user
             const t = (phase - REQ_FRAC - PROC_FRAC) / (1 - REQ_FRAC - PROC_FRAC);
-            drawPacket(lerp(neuron.x, user.x, t), lerp(neuron.y, user.y, t), PACKET.TEAL);
-            drawArrow(neuron, user, PACKET.TEAL);
+            drawPacket(lerp(neuron.x, user.x, t), lerp(neuron.y, user.y, t), PACKET.RESPONSE);
+            drawArrow(neuron, user, PACKET.RESPONSE);
         }
     });
 
@@ -277,90 +277,6 @@ function applyDownloadDetection() {
 }
 
 applyDownloadDetection();
-
-/* ----------------------------------------------------------------
-   ANIMATED STARFIELD BACKGROUND
----------------------------------------------------------------- */
-const starCanvas = document.getElementById('starsCanvas');
-const starCtx    = starCanvas.getContext('2d');
-
-const STAR_DENSITY   = 30;
-const STAR_MIN_SPEED = 0.03;
-const STAR_MAX_SPEED = 0.10;
-
-const SHOOT_CHANCE   = 0.003;
-const SHOOT_MIN_SPEED = 1.5;
-const SHOOT_MAX_SPEED = 3.0;
-const SHOOT_LEN      = 150;
-const SHOOT_LIFE     = 120;
-
-let stars = [], shootingStars = [];
-
-function resizeStars() {
-    const rect = document.getElementById('hero').getBoundingClientRect(),
-          dpr  = window.devicePixelRatio || 1;
-
-    starCanvas.width  = rect.width  * dpr;
-    starCanvas.height = rect.height * dpr;
-    starCanvas.style.width  = `${rect.width}px`;
-    starCanvas.style.height = `${rect.height}px`;
-    starCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.floor(rect.width / STAR_DENSITY);
-    stars = Array.from({ length: count }, () => ({
-        x: Math.random() * rect.width,
-        y: Math.random() * rect.height,
-        r: Math.random() * 1.0 + 0.2,
-        s: Math.random() * (STAR_MAX_SPEED - STAR_MIN_SPEED) + STAR_MIN_SPEED
-    }));
-}
-
-function animateStars() {
-    starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
-
-    stars.forEach(star => {
-        star.y += star.s;
-        if (star.y > starCanvas.height / (window.devicePixelRatio || 1)) star.y = 0;
-        starCtx.beginPath();
-        starCtx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        starCtx.fillStyle = 'rgba(255,255,255,0.8)';
-        starCtx.fill();
-    });
-
-    if (Math.random() < SHOOT_CHANCE) {
-        const angle = (Math.random() * Math.PI / 2) + Math.PI / 4;
-        const speed = Math.random() * (SHOOT_MAX_SPEED - SHOOT_MIN_SPEED) + SHOOT_MIN_SPEED;
-        const dir   = Math.random() < 0.5 ? 1 : -1;
-        shootingStars.push({
-            x: Math.random() * starCanvas.width / (window.devicePixelRatio || 1),
-            y: 0,
-            vx: dir * speed * Math.cos(angle),
-            vy: speed * Math.sin(angle),
-            life: 0
-        });
-    }
-
-    shootingStars.forEach((s, i) => {
-        s.x += s.vx;
-        s.y += s.vy;
-        s.life += 1;
-
-        starCtx.beginPath();
-        starCtx.moveTo(s.x, s.y);
-        starCtx.lineTo(s.x - s.vx * SHOOT_LEN, s.y - s.vy * SHOOT_LEN);
-        starCtx.strokeStyle = 'rgba(255,255,255,0.1)';
-        starCtx.lineWidth   = 2;
-        starCtx.stroke();
-
-        if (s.life > SHOOT_LIFE) shootingStars.splice(i, 1);
-    });
-
-    requestAnimationFrame(animateStars);
-}
-
-window.addEventListener('resize', resizeStars);
-resizeStars();
-requestAnimationFrame(animateStars);
 
 /* ----------------------------------------------------------------
    TYPEWRITER EFFECT (removed — hero copy is self-sufficient)
